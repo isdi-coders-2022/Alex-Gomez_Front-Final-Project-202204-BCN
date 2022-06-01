@@ -1,13 +1,15 @@
 import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginForm from "./components/LoginForm/LoginForm";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   return (
     <>
-      <LoginForm />
-      <RegisterForm />
+      <Routes>
+        <Route path="/" element={<Navigate to="/register" />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </>
   );
 }
