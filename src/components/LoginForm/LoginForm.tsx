@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../redux/hooks";
+import { userLoginThunk } from "../../redux/thunks/userThunks";
 import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = () => {
@@ -16,8 +18,11 @@ const LoginForm = () => {
     });
   };
 
+  const dispatch = useAppDispatch();
+
   const submitLogin = (event: React.SyntheticEvent) => {
     event.preventDefault();
+    dispatch(userLoginThunk(formData));
     setFormData(blankFields);
   };
 
