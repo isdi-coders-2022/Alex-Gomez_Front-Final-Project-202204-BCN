@@ -13,6 +13,5 @@ export const userRegisterThunk =
       formData
     );
     if (username) {
-      console.log(username);
     }
   };
