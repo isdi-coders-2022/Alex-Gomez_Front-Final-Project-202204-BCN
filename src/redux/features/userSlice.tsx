@@ -9,13 +9,17 @@ interface State {
 const initialState: State = {
   name: "",
   username: "",
-  logged: false,
+  logged: localStorage.getItem("token") ? true : false,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    login: (user, action) => ({ ...action.payload, logged: true }),
+  },
 });
+
+export const { login: loginActionCreator } = userSlice.actions;
 
 export default userSlice.reducer;
