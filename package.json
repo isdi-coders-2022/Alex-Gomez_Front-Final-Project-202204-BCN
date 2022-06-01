@@ -32,6 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "test-coverage": "react-scripts test --coverage",
+    "test-full": "react-scripts test --coverage --WatchAll",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
