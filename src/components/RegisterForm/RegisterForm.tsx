@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../redux/hooks";
+import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisteredFormStyled from "./RegisterFormStyled";
 
 const RegisterForm = () => {
@@ -7,6 +9,7 @@ const RegisterForm = () => {
     username: "",
     password: "",
   };
+  const dispatch = useAppDispatch();
 
   const [formData, setFormData] = useState(blankFields);
 
@@ -19,6 +22,7 @@ const RegisterForm = () => {
 
   const submitRegister = (event: React.SyntheticEvent) => {
     event.preventDefault();
+    dispatch(userRegisterThunk(formData));
     setFormData(blankFields);
   };
 
