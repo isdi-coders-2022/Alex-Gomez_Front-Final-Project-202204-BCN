@@ -55,5 +55,15 @@
   },
   "devDependencies": {
     "husky": "^7.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/index.ts",
+      "!src/reportWebVitals.ts",
+      "!src/setupTests.ts",
+      "!src/react-app-env.d.ts"
+    ]
   }
 }
