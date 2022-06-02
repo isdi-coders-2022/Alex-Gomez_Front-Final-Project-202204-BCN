@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisteredFormStyled from "./RegisterFormStyled";
@@ -66,6 +67,9 @@ const RegisterForm = () => {
           Register
         </button>
       </form>
+      <NavLink to="/login">
+        <p>Login user</p>
+      </NavLink>
     </RegisteredFormStyled>
   );
 };
