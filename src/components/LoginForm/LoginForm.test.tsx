@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import LoginForm from "./LoginForm";
 
@@ -8,9 +9,11 @@ describe("Given a LoginForm component", () => {
   describe("When it is instantiated", () => {
     test("Then it should render a form with 2 inputs and 1 button", () => {
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
       );
       expect(screen.getByLabelText("Username")).toBeInTheDocument();
       expect(screen.getByLabelText("Password")).toBeInTheDocument();
@@ -21,9 +24,11 @@ describe("Given a LoginForm component", () => {
   describe("When it's instantiated and login button is pressed", () => {
     test("Then it should call the submitLogin function", () => {
       render(
-        <Provider store={store}>
-          <LoginForm />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <LoginForm />
+          </Provider>
+        </BrowserRouter>
       );
       const usernameInput = "Username";
       const username = "Marta";
