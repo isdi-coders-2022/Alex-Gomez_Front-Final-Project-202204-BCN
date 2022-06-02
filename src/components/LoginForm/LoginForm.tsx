@@ -31,6 +31,7 @@ const LoginForm = () => {
       <form onSubmit={submitLogin} noValidate autoComplete="off">
         <label htmlFor="username">Username</label>
         <input
+          type="text"
           id="username"
           value={formData.username}
           onChange={changeData}
