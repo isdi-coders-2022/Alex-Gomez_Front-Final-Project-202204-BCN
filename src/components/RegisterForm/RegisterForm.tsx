@@ -31,6 +31,7 @@ const RegisterForm = () => {
       <form onSubmit={submitRegister} noValidate autoComplete="off">
         <label htmlFor="name">Name</label>
         <input
+          type="text"
           id="name"
           value={formData.name}
           onChange={changeData}
@@ -38,6 +39,7 @@ const RegisterForm = () => {
         />
         <label htmlFor="username">Username</label>
         <input
+          type="text"
           id="username"
           value={formData.username}
           onChange={changeData}
