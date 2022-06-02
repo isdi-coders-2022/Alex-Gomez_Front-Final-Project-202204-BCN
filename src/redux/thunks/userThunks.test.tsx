@@ -1,7 +1,7 @@
 import server from "../../mocks/server";
 import { userRegisterThunk, userLoginThunk } from "./userThunks";
 
-beforeAll(() => {
+beforeEach(() => {
   server.listen();
 });
 afterEach(() => {
@@ -13,7 +13,7 @@ afterAll(() => {
 });
 
 jest.mock("jwt-decode", () =>
-  jest.fn().mockResolvedValue({ username: "Luis" })
+  jest.fn().mockResolvedValue({ username: "fakeUser" })
 );
 
 const dispatch = jest.fn();
@@ -22,8 +22,8 @@ describe("Given a userLoginThunk", () => {
   describe("When it's invoked", () => {
     test("Then the dispatch function is called", async () => {
       const thunk = userLoginThunk({
-        username: "Luis",
-        password: "1234",
+        username: "Marta",
+        password: "5678",
       });
 
       await thunk(dispatch());
