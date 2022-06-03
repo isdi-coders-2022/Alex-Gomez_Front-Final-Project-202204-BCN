@@ -5,6 +5,7 @@ describe("Given a MessageCard component", () => {
   describe("When it is invoked", () => {
     test("it renders an image", () => {
       const Message = {
+        id: "asdasdaadasdasda",
         text: "First message posted in the BD",
         image:
           "https://upload.wikimedia.org/wikipedia/commons/8/8f/ItsukushimaTorii73…",
