@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisteredFormStyled from "./RegisterFormStyled";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 const RegisterForm = () => {
   const blankFields = {
@@ -54,7 +57,8 @@ const RegisterForm = () => {
           onChange={changeData}
           autoComplete="off"
         />
-        <button
+        <Button
+          variant="contained"
           type="submit"
           value="Send"
           disabled={
@@ -65,7 +69,7 @@ const RegisterForm = () => {
           onClick={submitRegister}
         >
           Register
-        </button>
+        </Button>
         <Link to="/login">Login user</Link>
       </form>
     </RegisteredFormStyled>
