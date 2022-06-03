@@ -7,11 +7,6 @@ const LoginFormStyled = styled.section`
     justify-content: center;
     align-items: center;
   }
-  p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 `;
 
 export default LoginFormStyled;
