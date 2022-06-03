@@ -1,6 +1,6 @@
 import HeaderStyled from "./HeaderStyled";
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const japanLogo = "/japanLogo.jpeg";
   return (
     <HeaderStyled>
