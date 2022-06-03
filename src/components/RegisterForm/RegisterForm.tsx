@@ -4,10 +4,8 @@ import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisteredFormStyled from "./RegisterFormStyled";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 
-const RegisterForm = () => {
+const RegisterForm = (): JSX.Element => {
   const blankFields = {
     name: "",
     username: "",

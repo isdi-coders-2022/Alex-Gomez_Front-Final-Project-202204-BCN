@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { userLoginThunk } from "../../redux/thunks/userThunks";
 import LoginFormStyled from "./LoginFormStyled";
 
-const LoginForm = () => {
+const LoginForm = (): JSX.Element => {
   const blankFields = {
     username: "",
     password: "",
