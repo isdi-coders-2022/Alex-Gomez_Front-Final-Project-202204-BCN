@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface State {
+  id: string;
   image: string;
-  test: string;
+  text: string;
   category: string;
   author: string;
 }
