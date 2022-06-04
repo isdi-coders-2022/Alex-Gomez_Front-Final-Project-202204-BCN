@@ -17,9 +17,9 @@ const MessageCard = ({
     <MessageCardStyled>
       <div className="container">
         <img className="img" src={image} alt={`pic by ${author}`} />
-        <span className="category">{category}</span>
+        <p className="category">{category}</p>
         <p className="text">{text}</p>
-        <span className="author">{author}</span>
+        <span className="author">by: {author}</span>
       </div>
     </MessageCardStyled>
   );

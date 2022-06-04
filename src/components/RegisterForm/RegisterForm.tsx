@@ -68,7 +68,8 @@ const RegisterForm = (): JSX.Element => {
         >
           Register
         </Button>
-        <Link to="/login">Login user</Link>
+        <span>Already have account?</span>
+        <Link to="/login">Login</Link>
         <Link to="/messageslist">Message list</Link>
       </form>
     </RegisteredFormStyled>

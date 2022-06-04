@@ -54,7 +54,8 @@ const LoginForm = (): JSX.Element => {
         >
           Login
         </button>
-        <Link to="/register">Register user</Link>
+        <span>Still don't have account?</span>
+        <Link to="/register">Register</Link>
       </form>
     </LoginFormStyled>
   );
