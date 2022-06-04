@@ -15,10 +15,12 @@ const MessageCard = ({
 }: IMessage): JSX.Element => {
   return (
     <MessageCardStyled>
-      <img className="img" src={image} alt={`pic by ${author}`} />
-      <p className="text">{text}</p>
-      <span className="category">{category}</span>
-      <span className="author">{author}</span>
+      <div className="container">
+        <img className="img" src={image} alt={`pic by ${author}`} />
+        <span className="category">{category}</span>
+        <p className="text">{text}</p>
+        <span className="author">{author}</span>
+      </div>
     </MessageCardStyled>
   );
 };
