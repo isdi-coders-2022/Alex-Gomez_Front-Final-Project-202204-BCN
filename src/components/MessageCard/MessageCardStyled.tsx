@@ -1,47 +1,39 @@
 import styled from "styled-components";
 
 const MessageCardStyled = styled.li`
-  --img-ratio: 3/2;
+  .container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+    border-radius: 1rem;
+  }
 
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
-  border-radius: 0.5rem;
-
-  img {
-    aspect-ratio: var(--img-ratio);
+  .img {
+    aspect-ratio: 3/2;
     object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
     width: 100%;
   }
-  img:first-child {
-    border-radius: 0.5rem 0.5rem 0 0;
-  }
 
-  img:last-child {
-    border-radius: 0 0 0.5rem 0.5rem;
-    margin-top: auto;
-  }
-
-  :not(img) {
+  p,
+  span {
     margin-left: 1rem;
     margin-right: 1rem;
   }
 
-  :not(img):first-child {
+  .category {
     margin-top: 1rem;
+    font-weight: bold;
   }
 
-  :last-of-type:not(img, h2, h3, h4) {
+  .author {
     margin-bottom: 1rem;
   }
 
-  :not(h2, h3, h4) {
-    font-size: 0.9rem;
-  }
-
-  a {
-    align-self: start;
+  @media (min-width: 400px) {
+    .container {
+      width: 390px;
+    }
   }
 `;
 
