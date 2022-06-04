@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const MessageCardStyled = styled.li`
+  margin: 1rem;
+
   .container {
     display: flex;
     flex-direction: column;
@@ -22,8 +24,16 @@ const MessageCardStyled = styled.li`
   }
 
   .category {
-    margin-top: 1rem;
-    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-style: oblique;
+    text-decoration: underline;
+    align-self: self-end;
+  }
+
+  .text {
+    height: 4rem;
+    word-wrap: break-word;
   }
 
   .author {
@@ -32,7 +42,7 @@ const MessageCardStyled = styled.li`
 
   @media (min-width: 400px) {
     .container {
-      width: 390px;
+      width: 300px;
     }
   }
 `;
