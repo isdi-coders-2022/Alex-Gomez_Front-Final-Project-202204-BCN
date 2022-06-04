@@ -8,6 +8,7 @@ const MessageCardStyled = styled.li`
     flex-direction: column;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
     border-radius: 1rem;
+    width: 90vw;
   }
 
   .img {
@@ -38,6 +39,7 @@ const MessageCardStyled = styled.li`
 
   .author {
     margin-bottom: 1rem;
+    font-weight: 500;
   }
 
   @media (min-width: 400px) {
