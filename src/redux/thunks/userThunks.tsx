@@ -4,19 +4,17 @@ import { toast } from "react-toastify";
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
 
-interface RegisterApi {
-  data: { username: string };
-}
-
 export const userRegisterThunk =
   (formData: { name: string; username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
     try {
       const urlPath = `${process.env.REACT_APP_API_URL}user/register`;
-      const { data: user } = await axios.post<RegisterApi>(urlPath, formData);
-      toast.success(`Registered successful ${user}!`);
-    } catch (Error) {
-      toast.success(`Something gone wrong ${Error}`);
+      const {
+        data: { username },
+      } = await axios.post(urlPath, formData);
+      toast.success(`Registered successful ${username}!`);
+    } catch (error: any) {
+      toast.success(`Something gone wrong: ${error.response.data.message}`);
     }
   };
 
