@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.li`
+const LoginFormStyled = styled.section`
   form {
     display: flex;
     flex-direction: column;
