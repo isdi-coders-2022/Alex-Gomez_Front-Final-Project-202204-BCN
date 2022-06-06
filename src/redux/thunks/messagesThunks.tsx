@@ -1,18 +1,34 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { loadMessagesActionCreator } from "../features/messagesSlice";
+import {
+  deleteMessageActionCreator,
+  loadMessagesActionCreator,
+} from "../features/messagesSlice";
 import { AppDispatch } from "../store/store";
 
-const messagesListThunk = () => async (dispatch: AppDispatch) => {
+export const messagesListThunk = () => async (dispatch: AppDispatch) => {
   try {
     const urlPath = `${process.env.REACT_APP_API_URL}messages/list`;
     const {
       data: { messages },
     } = await axios.get(urlPath);
     dispatch(loadMessagesActionCreator(messages));
-  } catch (Error) {
-    toast.success(`Something gone wrong ${Error}`);
+  } catch (error: any) {
+    toast.error(`Something gone wrong: ${error.response.data.message}`);
   }
 };
 
-export default messagesListThunk;
+export const messageDeleteThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
+      console.log(urlPath);
+      const { status } = await axios.delete(urlPath);
+      if (status === 200) {
+        dispatch(deleteMessageActionCreator(id));
+        toast.success(`Message deleted successfully`);
+      }
+    } catch (error: any) {
+      toast.error(`Something gone wrong: ${error.response.data.message}`);
+    }
+  };
