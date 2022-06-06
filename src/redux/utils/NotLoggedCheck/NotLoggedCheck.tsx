@@ -1,24 +1,28 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppSelector } from "../../hooks";
 
-const LoggedCheck = ({ children }: { children: JSX.Element | null }): any => {
+interface Props {
+  children: JSX.Element;
+}
+
+const NotLoggedCheck = ({ children }: Props): JSX.Element | null => {
   const useSelector = useAppSelector;
   const { logged } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!logged) {
-      navigate("/login");
+    if (logged) {
+      navigate("/messagelist");
     }
   }, [logged, navigate]);
 
-  if (logged) {
+  if (!logged) {
     return children;
   } else {
     return null;
   }
 };
 
-export default LoggedCheck;
+export default NotLoggedCheck;
