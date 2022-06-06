@@ -22,7 +22,6 @@ export const messageDeleteThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
       const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
-      console.log(urlPath);
       const { status } = await axios.delete(urlPath);
       if (status === 200) {
         dispatch(deleteMessageActionCreator(id));
