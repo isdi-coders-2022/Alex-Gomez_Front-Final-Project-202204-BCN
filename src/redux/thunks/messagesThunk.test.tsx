@@ -35,6 +35,7 @@ describe("Given a messageDeleteThunk", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+      server.close();
     });
   });
 });
