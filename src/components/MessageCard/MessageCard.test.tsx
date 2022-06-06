@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../redux/store/store";
 import MessageCard from "./MessageCard";
 
 describe("Given a MessageCard component", () => {
@@ -13,7 +15,11 @@ describe("Given a MessageCard component", () => {
         author: "Writer",
       };
 
-      render(<MessageCard message={Message} />);
+      render(
+        <Provider store={store}>
+          <MessageCard message={Message} />
+        </Provider>
+      );
 
       const renderedImage = screen.getByAltText("pic by Writer");
 
