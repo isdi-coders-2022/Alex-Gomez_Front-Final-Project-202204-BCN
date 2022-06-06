@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "test-coverage": "react-scripts test --coverage",
-    "test-full": "jest -- --coverage --watachAll=true --passWithNoTests",
+    "test-full": "jest -- --coverage --watchAll=true --passWithNoTests",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },

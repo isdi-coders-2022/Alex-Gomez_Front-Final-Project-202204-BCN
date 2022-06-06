@@ -70,7 +70,6 @@ const RegisterForm = (): JSX.Element => {
         </Button>
         <span>Already have account?</span>
         <Link to="/login">Login</Link>
-        <Link to="/messageslist">Message list</Link>
       </form>
     </RegisteredFormStyled>
   );
