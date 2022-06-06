@@ -2,7 +2,6 @@ import { rest } from "msw";
 
 export const mockToken = "mockToken";
 export const fakeUsername = "Luis";
-
 export const mockMessage = [
   {
     id: "9382384824242309432f",
@@ -20,6 +19,10 @@ export const mockMessage = [
   },
 ];
 
+export const mockId = "123456789";
+
+const mockDeleteResponse = "Message deleted successfully";
+
 export const handlers = [
   rest.post(`${process.env.REACT_APP_API_URL}user/register`, (req, res, ctx) =>
     res(ctx.status(201), ctx.json({ user: fakeUsername }))
@@ -28,7 +31,14 @@ export const handlers = [
   rest.post(`${process.env.REACT_APP_API_URL}user/login`, (req, res, ctx) =>
     res(ctx.status(200), ctx.json({ user: fakeUsername }))
   ),
+
   rest.get(`${process.env.REACT_APP_API_URL}messages/list`, (req, res, ctx) =>
     res(ctx.status(200), ctx.json({ messages: mockMessage }))
+  ),
+
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}messages/${mockId}`,
+    (req, res, ctx) =>
+      res(ctx.status(200), ctx.json({ messages: mockDeleteResponse }))
   ),
 ];
