@@ -4,15 +4,37 @@ import "./App.css";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import MessageListPage from "./pages/MessageList/MessageListPage";
-import LoggedCheck from "./components/LoggedCheck/LoggedCheck";
+import LoggedCheck from "./redux/utils/LoggedCheck/LoggedCheck";
+import NotLoggedCheck from "./redux/utils/NotLoggedCheck/NotLoggedCheck";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/register" />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={
+            <LoggedCheck>
+              <Navigate to="/messageslist" />
+            </LoggedCheck>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <NotLoggedCheck>
+              <RegisterPage />
+            </NotLoggedCheck>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <NotLoggedCheck>
+              <LoginPage />
+            </NotLoggedCheck>
+          }
+        />
         <Route
           path="/messageslist"
           element={

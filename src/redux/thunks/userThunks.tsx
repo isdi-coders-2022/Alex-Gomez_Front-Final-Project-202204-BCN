@@ -14,7 +14,7 @@ export const userRegisterThunk =
       } = await axios.post(urlPath, formData);
       toast.success(`Registered successful ${username}!`);
     } catch (error: any) {
-      toast.success(`Something gone wrong: ${error.response.data.message}`);
+      toast.error(`Something gone wrong: ${error.response.data.message}`);
     }
   };
 
