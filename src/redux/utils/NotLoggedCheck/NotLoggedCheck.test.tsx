@@ -11,7 +11,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("Given a notLoggedCheck component", () => {
   describe("When it's invoked and the user state is logged", () => {
-    test("Then it should call useNavigate with the route '/messageList'", () => {
+    test("Then it should call useNavigate with the route '/messagesList'", () => {
       const mockUserSlice = createSlice({
         name: "user",
         initialState: { name: "", username: "", logged: true },
@@ -29,7 +29,7 @@ describe("Given a notLoggedCheck component", () => {
           </NotLoggedCheck>
         </Provider>
       );
-      expect(mockUseNavigate).toHaveBeenCalledWith("/messagelist");
+      expect(mockUseNavigate).toHaveBeenCalledWith("/messageslist");
     });
   });
 
