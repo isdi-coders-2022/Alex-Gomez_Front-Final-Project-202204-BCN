@@ -42,6 +42,24 @@ const MessageCardStyled = styled.li`
     font-weight: 500;
   }
 
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .edit {
+    width: 40%;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .delete {
+    width: 40%;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+
   @media (min-width: 400px) {
     .container {
       width: 300px;

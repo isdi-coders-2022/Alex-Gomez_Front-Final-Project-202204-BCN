@@ -1,4 +1,7 @@
 import MessageCardStyled from "./MessageCardStyled";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 interface IMessage {
   message: {
@@ -20,6 +23,22 @@ const MessageCard = ({
         <p className="category">{category}</p>
         <p className="text">{text}</p>
         <span className="author">by: {author}</span>
+        <div className="buttons">
+          <Button
+            className="delete"
+            variant="outlined"
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
+          <Button
+            className="delete"
+            variant="outlined"
+            startIcon={<DeleteIcon />}
+          >
+            Delete
+          </Button>
+        </div>
       </div>
     </MessageCardStyled>
   );
