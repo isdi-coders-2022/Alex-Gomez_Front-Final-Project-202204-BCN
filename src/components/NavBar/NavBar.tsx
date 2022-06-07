@@ -12,7 +12,12 @@ const NavBar = (): JSX.Element => {
 
   return (
     <NavBarStyled>
-      <Button variant="contained" type="submit" onClick={Logout}>
+      <Button
+        className="logoutButton"
+        variant="contained"
+        type="submit"
+        onClick={Logout}
+      >
         Logout
       </Button>
     </NavBarStyled>
