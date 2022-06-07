@@ -9,7 +9,9 @@ const NavBarStyled = styled.div`
   margin-bottom: 0;
   height: 5rem;
   background-color: rgb(23, 100, 192);
-  .logoutButton {
+  .logoutButton,
+  .createButton,
+  .homeButton {
     height: 3rem;
   }
 `;
