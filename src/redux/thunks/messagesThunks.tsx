@@ -22,11 +22,9 @@ export const messageDeleteThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
       const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
-      const { status } = await axios.delete(urlPath);
-      if (status === 200) {
-        dispatch(deleteMessageActionCreator(id));
-        toast.success(`Message deleted successfully`);
-      }
+      await axios.delete(urlPath);
+      dispatch(deleteMessageActionCreator(id));
+      toast.success(`Message deleted successfully`);
     } catch (error: any) {
       toast.error(`Something gone wrong: ${error.response.data.message}`);
     }
