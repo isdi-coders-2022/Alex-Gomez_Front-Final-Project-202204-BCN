@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
 import RegisteredFormStyled from "./RegisterFormStyled";
@@ -12,6 +12,7 @@ const RegisterForm = (): JSX.Element => {
     password: "",
   };
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState(blankFields);
 
@@ -26,6 +27,7 @@ const RegisterForm = (): JSX.Element => {
     event.preventDefault();
     dispatch(userRegisterThunk(formData));
     setFormData(blankFields);
+    navigate("/login");
   };
 
   return (

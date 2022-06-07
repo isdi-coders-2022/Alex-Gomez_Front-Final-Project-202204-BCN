@@ -23,6 +23,7 @@
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.3",
     "styled-components": "^5.3.5",
@@ -34,7 +35,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test-coverage": "react-scripts test --coverage",
-    "test-full": "jest -- --coverage --watchAll=true --passWithNoTests",
+    "test-full": "react-scripts test --watchAll=true --detectOpenHandles",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },

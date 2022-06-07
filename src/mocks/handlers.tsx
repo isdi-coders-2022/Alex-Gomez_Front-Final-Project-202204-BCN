@@ -21,7 +21,9 @@ export const mockMessage = [
 
 export const mockId = "123456789";
 
-const mockDeleteResponse = "Message deleted successfully";
+const mockDeleteResponse = {
+  message: "Item deleted successfully",
+};
 
 export const handlers = [
   rest.post(`${process.env.REACT_APP_API_URL}user/register`, (req, res, ctx) =>

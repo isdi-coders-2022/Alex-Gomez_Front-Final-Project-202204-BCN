@@ -14,7 +14,7 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
     } = await axios.get(urlPath);
     dispatch(loadMessagesActionCreator(messages));
   } catch (error: any) {
-    toast.error(`Something gone wrong: ${error.response.data.message}`);
+    toast.error(`Something gone wrong: ${error}`);
   }
 };
 
@@ -26,6 +26,6 @@ export const messageDeleteThunk =
       dispatch(deleteMessageActionCreator(id));
       toast.success(`Message deleted successfully`);
     } catch (error: any) {
-      toast.error(`Something gone wrong: ${error.response.data.message}`);
+      toast.error(`Something gone wrong: ${error}`);
     }
   };
