@@ -5,7 +5,7 @@ import {
   startLoadingModal,
   stopLoadingModal,
 } from "../../components/LoadingModal/LoadingModal";
-import { loginActionCreator } from "../features/userSlice";
+import { loginActionCreator, logoutActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
 
 export const userRegisterThunk =
@@ -46,3 +46,8 @@ export const userLoginThunk =
       toast.dismiss();
     }
   };
+
+export const userLogoutThunk = () => (dispatch: AppDispatch) => {
+  localStorage.removeItem("token");
+  dispatch(logoutActionCreator());
+};

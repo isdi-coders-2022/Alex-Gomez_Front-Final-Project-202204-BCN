@@ -1,5 +1,9 @@
 import server from "../../mocks/server";
-import { userRegisterThunk, userLoginThunk } from "./userThunks";
+import {
+  userRegisterThunk,
+  userLoginThunk,
+  userLogoutThunk,
+} from "./userThunks";
 
 beforeEach(() => {
   server.listen();
@@ -43,6 +47,18 @@ describe("Given a userRegisterThunk", () => {
       });
 
       await thunk(dispatch());
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a userLogoutThunk", () => {
+  describe("When it is invoked", () => {
+    test("Then the dispatch function is called", async () => {
+      const thunk = userLogoutThunk();
+
+      await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
     });
