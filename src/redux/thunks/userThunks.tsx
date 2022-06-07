@@ -1,6 +1,10 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
+import {
+  startLoadingModal,
+  stopLoadingModal,
+} from "../../components/LoadingModal/LoadingModal";
 import { loginActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
 
@@ -8,6 +12,7 @@ export const userRegisterThunk =
   (formData: { name: string; username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
     try {
+      startLoadingModal();
       const urlPath = `${process.env.REACT_APP_API_URL}user/register`;
       const {
         data: { username },
@@ -15,12 +20,15 @@ export const userRegisterThunk =
       toast.success(`Registered successful ${username}!`);
     } catch (error: any) {
       toast.error(`Something gone wrong: ${error.response.data.message}`);
+    } finally {
+      stopLoadingModal();
     }
   };
 
 export const userLoginThunk =
   (formData: { username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
+    toast.loading("Loading...");
     const urlPath = `${process.env.REACT_APP_API_URL}user/login`;
     try {
       const {
@@ -34,5 +42,7 @@ export const userLoginThunk =
       }
     } catch (Error) {
       toast.error(`Something gone wrong: ${Error}!`);
+    } finally {
+      toast.dismiss();
     }
   };
