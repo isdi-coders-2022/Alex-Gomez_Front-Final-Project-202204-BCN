@@ -1,11 +1,15 @@
 import MessageList from "../../components/MessageList/MessageList";
+import NavBar from "../../components/NavBar/NavBar";
 import MessageListPageStyled from "./MessageListPageStyled";
 
 const MessageListPage = () => {
   return (
-    <MessageListPageStyled>
-      <MessageList />
-    </MessageListPageStyled>
+    <>
+      <NavBar />
+      <MessageListPageStyled>
+        <MessageList />
+      </MessageListPageStyled>
+    </>
   );
 };
 
