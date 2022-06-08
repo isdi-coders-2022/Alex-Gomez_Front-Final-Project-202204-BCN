@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface State {
+  id: string;
   name: string;
   username: string;
   logged: boolean;
 }
 
 const initialState: State = {
+  id: "",
   name: "",
   username: "",
   logged: localStorage.getItem("token") ? true : false,
@@ -17,7 +19,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     login: (user, action) => ({ ...action.payload, logged: true }),
-    logout: () => ({ name: "", username: "", logged: false }),
+    logout: () => ({ id: "", name: "", username: "", logged: false }),
   },
 });
 

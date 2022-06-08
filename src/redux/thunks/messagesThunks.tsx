@@ -5,6 +5,7 @@ import {
   stopLoadingModal,
 } from "../../components/LoadingModal/LoadingModal";
 import {
+  createMessageActionCreator,
   deleteMessageActionCreator,
   loadMessagesActionCreator,
 } from "../features/messagesSlice";
@@ -12,7 +13,7 @@ import { AppDispatch } from "../store/store";
 
 interface Message {
   id: string;
-  image: string;
+  image: any;
   text: string;
   category: string;
   author: string;
@@ -51,6 +52,22 @@ export const messageDeleteThunk =
       dispatch(deleteMessageActionCreator(id));
       toast.success(`Message deleted successfully`);
     } catch (error: any) {
+      toast.error(`Something gone wrong: ${error}`);
+    } finally {
+      stopLoadingModal();
+    }
+  };
+
+export const messageCreateThunk =
+  (formData: { id: string; category: string; text: string; image: any }) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      startLoadingModal("Saving message....");
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/create`;
+      await axios.post(urlPath, formData, getAuthHeader());
+      dispatch(createMessageActionCreator);
+      toast.success("Message Published correctly!");
+    } catch (error) {
       toast.error(`Something gone wrong: ${error}`);
     } finally {
       stopLoadingModal();

@@ -1,14 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { messageCreateThunk } from "../../redux/thunks/messagesThunks";
 import MessageCreateFormStyled from "./MessageCreateFormStyled";
 
-const MessageCreateForm = () => {
-  const blankfields = {
+const MessageCreateForm = (): JSX.Element => {
+  const blankFields = {
+    id: "",
     category: "",
     text: "",
     image: "",
   };
 
-  const [formData, setFormData] = useState(blankfields);
+  const dispatch = useAppDispatch();
+  const { id } = useAppSelector((state) => state.user);
+
+  const [formData, setFormData] = useState(blankFields);
 
   const changeData = (event: { target: { id: string; value: string } }) => {
     setFormData({
@@ -17,9 +23,16 @@ const MessageCreateForm = () => {
     });
   };
 
+  const submitMessage = (event: React.BaseSyntheticEvent) => {
+    event.preventDefault();
+    formData.id = id;
+    dispatch(messageCreateThunk(formData));
+    setFormData(blankFields);
+  };
+
   return (
     <MessageCreateFormStyled>
-      <form className="createForm">
+      <form className="createForm" onSubmit={submitMessage}>
         <label htmlFor="category">Category</label>
         <select
           id="category"
