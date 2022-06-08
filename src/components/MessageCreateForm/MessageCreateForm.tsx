@@ -1,12 +1,32 @@
+import { useState } from "react";
 import MessageCreateFormStyled from "./MessageCreateFormStyled";
 
 const MessageCreateForm = () => {
-  //image, category, text, *author, *likes
+  const blankfields = {
+    category: "",
+    text: "",
+    image: "",
+  };
+
+  const [formData, setFormData] = useState(blankfields);
+
+  const changeData = (event: { target: { id: string; value: string } }) => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
+
   return (
     <MessageCreateFormStyled>
       <form className="createForm">
         <label htmlFor="category">Category</label>
-        <select id="category">
+        <select
+          id="category"
+          value={formData.category}
+          onChange={changeData}
+          autoComplete="off"
+        >
           <option value="Tradition">Tradition</option>
           <option value="Culture">Culture</option>
           <option value="Leisure">Leisure</option>
@@ -15,7 +35,15 @@ const MessageCreateForm = () => {
         </select>
 
         <label htmlFor="text">Write your message</label>
-        <textarea id="text" maxLength={240} cols={30} rows={8} />
+        <textarea
+          id="text"
+          value={formData.text}
+          onChange={changeData}
+          autoComplete="off"
+          maxLength={240}
+          cols={30}
+          rows={8}
+        />
 
         <label htmlFor="image">Upload image</label>
         <input
@@ -23,8 +51,19 @@ const MessageCreateForm = () => {
           id="image"
           name="image"
           accept="image/png, image/jpeg"
+          value={formData.image}
+          onChange={changeData}
+          autoComplete="off"
         />
-        <button type="submit" value="Send">
+        <button
+          type="submit"
+          value="Send"
+          disabled={
+            formData.category === "" ||
+            formData.text === "" ||
+            formData.image === ""
+          }
+        >
           Publish
         </button>
       </form>
