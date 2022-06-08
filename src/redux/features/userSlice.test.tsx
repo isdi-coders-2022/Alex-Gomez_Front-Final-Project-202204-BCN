@@ -4,12 +4,14 @@ describe("Given a userSlice reducer", () => {
   describe("When it receives a username and password", () => {
     test("The it should load the new state with this data", () => {
       interface State {
+        id: string;
         name: string;
         username: string;
         logged: boolean;
       }
 
       const initialState: State = {
+        id: "",
         name: "",
         username: "",
         logged: localStorage.getItem("token") ? true : false,
