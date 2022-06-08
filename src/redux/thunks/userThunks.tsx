@@ -18,8 +18,24 @@ export const userRegisterThunk =
         data: { username },
       } = await axios.post(urlPath, formData);
       toast.success(`Registered successful ${username}!`);
+
+      const newUser = {
+        username: formData.username,
+        password: formData.password,
+      };
+
+      const registerPath = `${process.env.REACT_APP_API_URL}user/login`;
+      const {
+        data: { token },
+      } = await axios.post(registerPath, newUser);
+
+      localStorage.setItem("token", token);
+      const userInfo = jwtDecode(token);
+      toast.success("You are now logged in");
+      dispatch(loginActionCreator(userInfo));
+      stopLoadingModal();
     } catch (error: any) {
-      toast.error(`Something gone wrong: ${error.response.data.message}`);
+      toast.error(`Something gone wrong: ${error}`);
     } finally {
       stopLoadingModal();
     }
