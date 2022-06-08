@@ -12,7 +12,7 @@ export const userRegisterThunk =
   (formData: { name: string; username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
     try {
-      startLoadingModal();
+      startLoadingModal("Registiring user...");
       const urlPath = `${process.env.REACT_APP_API_URL}user/register`;
       const {
         data: { username },
@@ -31,7 +31,7 @@ export const userRegisterThunk =
 
       localStorage.setItem("token", token);
       const userInfo = jwtDecode(token);
-      toast.success("You are now logged in");
+      toast.success("You are now  Registered");
       dispatch(loginActionCreator(userInfo));
       stopLoadingModal();
     } catch (error: any) {
@@ -44,7 +44,7 @@ export const userRegisterThunk =
 export const userLoginThunk =
   (formData: { username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
-    toast.loading("Loading...");
+    toast.loading("Logging in....");
     const urlPath = `${process.env.REACT_APP_API_URL}user/login`;
     try {
       const {
