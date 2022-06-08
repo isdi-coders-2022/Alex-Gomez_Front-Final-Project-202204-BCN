@@ -28,6 +28,10 @@ const MessageCreateFormStyled = styled.section`
     margin: 1rem;
   }
 
+  button {
+    margin-top: 3rem;
+  }
+
   @media (min-width: 400px) {
     .createForm {
       width: 390px;
