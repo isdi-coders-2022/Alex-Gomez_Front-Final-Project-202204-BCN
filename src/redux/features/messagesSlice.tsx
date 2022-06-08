@@ -17,12 +17,14 @@ const messageSlice = createSlice({
     loadMessages: (messages, action) => [...action.payload],
     deleteMessage: (messages, action) =>
       messages.filter((message) => message.id !== action.payload),
+    createMessage: (messages, action) => [...messages, action.payload],
   },
 });
 
 export const {
   loadMessages: loadMessagesActionCreator,
   deleteMessage: deleteMessageActionCreator,
+  createMessage: createMessageActionCreator,
 } = messageSlice.actions;
 
 export default messageSlice.reducer;
