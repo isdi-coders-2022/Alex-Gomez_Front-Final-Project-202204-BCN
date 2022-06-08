@@ -29,7 +29,7 @@ const getAuthHeader = () => {
 
 export const messagesListThunk = () => async (dispatch: AppDispatch) => {
   try {
-    startLoadingModal();
+    startLoadingModal("Loading messages...");
     const urlPath = `${process.env.REACT_APP_API_URL}messages/list`;
     const {
       data: { messages },
@@ -45,7 +45,7 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
 export const messageDeleteThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      startLoadingModal();
+      startLoadingModal("Erasing message....");
       const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
       await axios.delete(urlPath, getAuthHeader());
       dispatch(deleteMessageActionCreator(id));

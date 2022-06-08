@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import MessageListPage from "./pages/MessageList/MessageListPage";
 import LoggedCheck from "./redux/utils/LoggedCheck/LoggedCheck";
 import NotLoggedCheck from "./redux/utils/NotLoggedCheck/NotLoggedCheck";
+import MessageCreatePage from "./pages/MessageCreatePage/MessageCreatePage";
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
           element={
             <LoggedCheck>
               <MessageListPage />
+            </LoggedCheck>
+          }
+        />
+        <Route
+          path="/messageCreate"
+          element={
+            <LoggedCheck>
+              <MessageCreatePage />
             </LoggedCheck>
           }
         />
