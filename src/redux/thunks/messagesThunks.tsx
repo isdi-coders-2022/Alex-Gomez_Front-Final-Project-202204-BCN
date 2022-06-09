@@ -42,6 +42,22 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
   }
 };
 
+export const mineMessagesListThunk =
+  (username: string) => async (dispatch: AppDispatch) => {
+    try {
+      startLoadingModal("Loading messages...");
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/mine`;
+      const {
+        data: { messages },
+      } = await axios.get<AxiosMessageResponse>(urlPath, getAuthHeader());
+      dispatch(loadMessagesActionCreator(messages));
+    } catch (error: any) {
+      toast.error(`Something gone wrong: ${error}`);
+    } finally {
+      stopLoadingModal();
+    }
+  };
+
 export const messageDeleteThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {

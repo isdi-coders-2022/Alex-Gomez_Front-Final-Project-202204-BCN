@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
@@ -7,6 +6,7 @@ import MessageListPage from "./pages/MessageList/MessageListPage";
 import LoggedCheck from "./redux/utils/LoggedCheck/LoggedCheck";
 import NotLoggedCheck from "./redux/utils/NotLoggedCheck/NotLoggedCheck";
 import MessageCreatePage from "./pages/MessageCreatePage/MessageCreatePage";
+import MineMessageListPage from "./pages/MineMessageList/MineMessageListPage";
 
 function App() {
   return (
@@ -44,6 +44,15 @@ function App() {
             </LoggedCheck>
           }
         />
+        <Route
+          path="/myMessageList"
+          element={
+            <LoggedCheck>
+              <MineMessageListPage />
+            </LoggedCheck>
+          }
+        />
+
         <Route
           path="/messageCreate"
           element={
