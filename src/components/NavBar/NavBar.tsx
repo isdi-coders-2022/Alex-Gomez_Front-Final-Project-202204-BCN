@@ -15,12 +15,16 @@ const NavBar = (): JSX.Element => {
     toast.success("Logout successfull!");
   };
 
-  const goToCreateMessage = (): void => {
-    navigate("/messageCreate");
-  };
-
   const goToHome = (): void => {
     navigate("/messageslist");
+  };
+
+  const goToMyMessages = (): void => {
+    navigate("/myMessageList");
+  };
+
+  const goToCreateMessage = (): void => {
+    navigate("/messageCreate");
   };
 
   return (
@@ -33,6 +37,16 @@ const NavBar = (): JSX.Element => {
       >
         Home
       </Button>
+
+      <Button
+        className="myMessages"
+        variant="contained"
+        type="submit"
+        onClick={goToMyMessages}
+      >
+        My messages
+      </Button>
+
       <Button
         className="createButton"
         variant="contained"
