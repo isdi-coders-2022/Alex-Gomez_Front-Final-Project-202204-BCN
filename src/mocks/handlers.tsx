@@ -56,7 +56,7 @@ export const handlers = [
   ),
 
   rest.post(
-    `${process.env.REACT_APP_API_URL}messages/create`,
+    `${process.env.REACT_APP_API_URL}messages/mine/create`,
     (req, res, ctx) =>
       res(ctx.status(200), ctx.json({ messages: mockCreateResponse }))
   ),
