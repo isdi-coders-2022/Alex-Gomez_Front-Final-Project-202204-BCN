@@ -11,7 +11,8 @@ const NavBarStyled = styled.div`
   background-color: rgb(23, 100, 192);
   .logoutButton,
   .createButton,
-  .homeButton {
+  .homeButton,
+  .myMessages {
     height: 3rem;
   }
 `;
