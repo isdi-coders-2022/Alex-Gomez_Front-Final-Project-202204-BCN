@@ -12,7 +12,6 @@ import {
 import { AppDispatch } from "../store/store";
 
 interface Message {
-  id: string;
   image: any;
   text: string;
   category: string;
@@ -59,7 +58,12 @@ export const messageDeleteThunk =
   };
 
 export const messageCreateThunk =
-  (formData: { id: string; category: string; text: string; image: any }) =>
+  (formData: {
+    username: string;
+    category: string;
+    text: string;
+    image: any;
+  }) =>
   async (dispatch: AppDispatch) => {
     try {
       startLoadingModal("Saving message....");

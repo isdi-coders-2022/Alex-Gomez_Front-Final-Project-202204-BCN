@@ -5,14 +5,14 @@ import MessageCreateFormStyled from "./MessageCreateFormStyled";
 
 const MessageCreateForm = (): JSX.Element => {
   const blankFields = {
-    id: "",
+    username: "",
     category: "",
     text: "",
     image: "",
   };
 
   const dispatch = useAppDispatch();
-  const { id } = useAppSelector((state) => state.user);
+  const { username } = useAppSelector((state) => state.user);
 
   const [formData, setFormData] = useState(blankFields);
 
@@ -25,7 +25,7 @@ const MessageCreateForm = (): JSX.Element => {
 
   const submitMessage = (event: React.BaseSyntheticEvent) => {
     event.preventDefault();
-    formData.id = id;
+    formData.username = username;
     dispatch(messageCreateThunk(formData));
     setFormData(blankFields);
   };
