@@ -67,7 +67,7 @@ export const messageCreateThunk =
   async (dispatch: AppDispatch) => {
     try {
       startLoadingModal("Saving message....");
-      const urlPath = `${process.env.REACT_APP_API_URL}messages/create`;
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/mine/create`;
       await axios.post(urlPath, formData, getAuthHeader());
       dispatch(createMessageActionCreator);
       toast.success("Message Published correctly!");
