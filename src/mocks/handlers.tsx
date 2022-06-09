@@ -19,10 +19,21 @@ export const mockMessage = [
   },
 ];
 
+export const mockCreateData = {
+  username: "Luis",
+  category: "Locations",
+  text: "Happy location",
+  image: "A file",
+};
+
 export const mockId = "123456789";
 
 const mockDeleteResponse = {
   message: "Item deleted successfully",
+};
+
+const mockCreateResponse = {
+  message: "Item created correctly",
 };
 
 export const handlers = [
@@ -42,5 +53,11 @@ export const handlers = [
     `${process.env.REACT_APP_API_URL}messages/${mockId}`,
     (req, res, ctx) =>
       res(ctx.status(200), ctx.json({ messages: mockDeleteResponse }))
+  ),
+
+  rest.post(
+    `${process.env.REACT_APP_API_URL}messages/create`,
+    (req, res, ctx) =>
+      res(ctx.status(200), ctx.json({ messages: mockCreateResponse }))
   ),
 ];
