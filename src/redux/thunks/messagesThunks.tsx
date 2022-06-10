@@ -9,6 +9,7 @@ import {
   deleteMessageActionCreator,
   loadMessagesActionCreator,
 } from "../features/messagesSlice";
+import { loadOneMessagesActionCreator } from "../features/oneMessageSlice";
 import { AppDispatch } from "../store/store";
 
 interface Message {
@@ -85,6 +86,19 @@ export const messageCreateThunk =
       dispatch(createMessageActionCreator);
       stopOkLoadingModal("Message Published correctly!");
     } catch (error) {
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    }
+  };
+
+export const messageGetThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      startLoadingModal("Getting message....");
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
+      await axios.get(urlPath, getAuthHeader());
+      dispatch(loadOneMessagesActionCreator(id));
+      stopOkLoadingModal(`Message got successfully`);
+    } catch (error: any) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
