@@ -44,6 +44,10 @@ const mockCreateResponse = {
   message: "Item created correctly",
 };
 
+const mockGotResponse = {
+  message: "Item created correctly",
+};
+
 export const handlers = [
   rest.post(`${process.env.REACT_APP_API_URL}user/register`, (req, res, ctx) =>
     res(ctx.status(201), ctx.json({ user: fakeUsername }))
@@ -61,6 +65,12 @@ export const handlers = [
     `${process.env.REACT_APP_API_URL}messages/${mockId}`,
     (req, res, ctx) =>
       res(ctx.status(200), ctx.json({ messages: mockDeleteResponse }))
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}messages/${mockId}`,
+    (req, res, ctx) =>
+      res(ctx.status(200), ctx.json({ messages: mockGotResponse }))
   ),
 
   rest.post(

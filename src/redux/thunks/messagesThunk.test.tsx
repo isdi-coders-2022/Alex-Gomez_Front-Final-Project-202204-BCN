@@ -4,6 +4,7 @@ import {
   messagesListThunk,
   messageDeleteThunk,
   messageCreateThunk,
+  messageGetThunk,
 } from "./messagesThunks";
 
 beforeEach(() => {
@@ -49,6 +50,20 @@ describe("Given a messageCreateThunk", () => {
   describe("When it's invoked with an formData", () => {
     test("Then it shouls call the dispatch", async () => {
       const thunk = messageCreateThunk(mockCreateData);
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a messageGetThunk", () => {
+  describe("When it's invoked with an id", () => {
+    test("Then it shouls call the dispatch", async () => {
+      const id = "123456789";
+
+      const thunk = messageGetThunk(id);
 
       await thunk(dispatch);
 
