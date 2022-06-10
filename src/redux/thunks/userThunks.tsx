@@ -1,9 +1,9 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { toast } from "react-toastify";
 import {
   startLoadingModal,
-  stopLoadingModal,
+  stopErrorLoadingModal,
+  stopOkLoadingModal,
 } from "../../components/LoadingModal/LoadingModal";
 import { loginActionCreator, logoutActionCreator } from "../features/userSlice";
 import { AppDispatch } from "../store/store";
@@ -17,7 +17,6 @@ export const userRegisterThunk =
       const {
         data: { username },
       } = await axios.post(urlPath, formData);
-      toast.success(`Registered successful ${username}!`);
 
       const newUser = {
         username: formData.username,
@@ -31,20 +30,19 @@ export const userRegisterThunk =
 
       localStorage.setItem("token", token);
       const userInfo = jwtDecode(token);
-      toast.success("You are now  Registered");
+
       dispatch(loginActionCreator(userInfo));
-      stopLoadingModal();
+
+      stopOkLoadingModal(`Registered successful ${username}!`);
     } catch (error: any) {
-      toast.error(`Something gone wrong: ${error}`);
-    } finally {
-      stopLoadingModal();
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
 
 export const userLoginThunk =
   (formData: { username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
-    toast.loading("Logging in....");
+    startLoadingModal("Logging in....");
     const urlPath = `${process.env.REACT_APP_API_URL}user/login`;
     try {
       const {
@@ -52,14 +50,12 @@ export const userLoginThunk =
       } = await axios.post(urlPath, formData);
       if ({ data: { token: String } }) {
         localStorage.setItem("token", token);
-        toast.success("You are now logged in");
         const userInfo = jwtDecode(token);
         dispatch(loginActionCreator(userInfo));
+        stopOkLoadingModal("You are now logged in");
       }
     } catch (Error) {
-      toast.error(`Something gone wrong: ${Error}!`);
-    } finally {
-      toast.dismiss();
+      stopErrorLoadingModal(`Something gone wrong: ${Error}!`);
     }
   };
 

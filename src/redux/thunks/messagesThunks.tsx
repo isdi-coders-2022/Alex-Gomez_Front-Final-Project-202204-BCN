@@ -1,8 +1,8 @@
 import axios from "axios";
-import { toast } from "react-toastify";
 import {
   startLoadingModal,
-  stopLoadingModal,
+  stopErrorLoadingModal,
+  stopOkLoadingModal,
 } from "../../components/LoadingModal/LoadingModal";
 import {
   createMessageActionCreator,
@@ -35,10 +35,9 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
       data: { messages },
     } = await axios.get<AxiosMessageResponse>(urlPath, getAuthHeader());
     dispatch(loadMessagesActionCreator(messages));
+    stopOkLoadingModal("Messages loaded");
   } catch (error: any) {
-    toast.error(`Something gone wrong: ${error}`);
-  } finally {
-    stopLoadingModal();
+    stopErrorLoadingModal(`Something gone wrong: ${error}`);
   }
 };
 
@@ -51,10 +50,9 @@ export const mineMessagesListThunk =
         data: { messages },
       } = await axios.get<AxiosMessageResponse>(urlPath, getAuthHeader());
       dispatch(loadMessagesActionCreator(messages));
+      stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
-      toast.error(`Something gone wrong: ${error}`);
-    } finally {
-      stopLoadingModal();
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
 
@@ -65,11 +63,9 @@ export const messageDeleteThunk =
       const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
       await axios.delete(urlPath, getAuthHeader());
       dispatch(deleteMessageActionCreator(id));
-      toast.success(`Message deleted successfully`);
+      stopOkLoadingModal(`Message deleted successfully`);
     } catch (error: any) {
-      toast.error(`Something gone wrong: ${error}`);
-    } finally {
-      stopLoadingModal();
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
 
@@ -86,10 +82,8 @@ export const messageCreateThunk =
       const urlPath = `${process.env.REACT_APP_API_URL}messages/mine/create`;
       await axios.post(urlPath, formData, getAuthHeader());
       dispatch(createMessageActionCreator);
-      toast.success("Message Published correctly!");
+      stopOkLoadingModal("Message Published correctly!");
     } catch (error) {
-      toast.error(`Something gone wrong: ${error}`);
-    } finally {
-      stopLoadingModal();
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
