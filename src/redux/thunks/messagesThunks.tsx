@@ -17,6 +17,7 @@ interface Message {
   text: string;
   category: string;
   author: string;
+  id: string;
 }
 
 interface AxiosMessageResponse {
@@ -70,6 +71,19 @@ export const messageDeleteThunk =
     }
   };
 
+export const messageGetThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      startLoadingModal("Getting message....");
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/one/${id}`;
+      await axios.get(urlPath, getAuthHeader());
+      dispatch(loadOneMessagesActionCreator(id));
+      stopOkLoadingModal(`Message got successfully`);
+    } catch (error: any) {
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    }
+  };
+
 export const messageCreateThunk =
   (formData: {
     username: string;
@@ -86,19 +100,6 @@ export const messageCreateThunk =
       dispatch(createMessageActionCreator);
       stopOkLoadingModal("Message Published correctly!");
     } catch (error) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
-    }
-  };
-
-export const messageGetThunk =
-  (id: string) => async (dispatch: AppDispatch) => {
-    try {
-      startLoadingModal("Getting message....");
-      const urlPath = `${process.env.REACT_APP_API_URL}messages/${id}`;
-      await axios.get(urlPath, getAuthHeader());
-      dispatch(loadOneMessagesActionCreator(id));
-      stopOkLoadingModal(`Message got successfully`);
-    } catch (error: any) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
