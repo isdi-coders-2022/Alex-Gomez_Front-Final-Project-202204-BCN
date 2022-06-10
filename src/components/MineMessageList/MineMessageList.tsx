@@ -9,7 +9,6 @@ const MineMessageList = () => {
 
   const dispatch = useAppDispatch();
   const { username } = useSelector((state) => state.user);
-  console.log(username);
 
   useEffect(() => {
     dispatch(mineMessagesListThunk(username));

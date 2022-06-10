@@ -16,7 +16,12 @@ const MessageCard = ({
   return (
     <MessageCardStyled>
       <div className="container">
-        <img className="img" src={image} alt={`pic by ${author}`} />
+        <img
+          className="img"
+          crossOrigin=""
+          src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
+          alt={`pic by ${author}`}
+        />
         <p className="category">{category}</p>
         <p className="text">{text}</p>
         <span className="author">by: {author}</span>
