@@ -68,7 +68,7 @@ export const handlers = [
   ),
 
   rest.get(
-    `${process.env.REACT_APP_API_URL}messages/${mockId}`,
+    `${process.env.REACT_APP_API_URL}messages/one/${mockId}`,
     (req, res, ctx) =>
       res(ctx.status(200), ctx.json({ messages: mockGotResponse }))
   ),
