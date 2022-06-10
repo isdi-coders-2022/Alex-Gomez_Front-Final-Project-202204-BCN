@@ -19,6 +19,14 @@ export const mockMessage = [
   },
 ];
 
+export const oneMockMessage = {
+  id: "wrerwweawegqgqrqggr",
+  text: "Second message posted in the BD",
+  image: "https:/www.fake.com",
+  category: "Locations",
+  author: "Writer2",
+};
+
 export const mockCreateData = {
   username: "Luis",
   category: "Locations",
