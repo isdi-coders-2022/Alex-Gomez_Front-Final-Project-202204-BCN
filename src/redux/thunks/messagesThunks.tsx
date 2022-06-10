@@ -80,11 +80,6 @@ export const messageCreateThunk =
     try {
       startLoadingModal("Saving message....");
       const urlPath = `${process.env.REACT_APP_API_URL}messages/mine/create`;
-      debugger;
-      console.log(`dispatch category: ${formData.category}`);
-      console.log(`dispatch text: ${formData.text}`);
-      console.log(`dispatch image: ${formData.image}`);
-      console.log(`dispatch username: ${formData.username}`);
 
       await axios.post(urlPath, formData, getAuthHeader());
       dispatch(createMessageActionCreator);
