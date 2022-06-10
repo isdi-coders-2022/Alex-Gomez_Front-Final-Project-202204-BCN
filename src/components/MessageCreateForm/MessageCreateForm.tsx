@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { messageCreateThunk } from "../../redux/thunks/messagesThunks";
 import MessageCreateFormStyled from "./MessageCreateFormStyled";
 
 const MessageCreateForm = (): JSX.Element => {
-  const blankFields = {
+  interface IRegisterForm {
+    username: string;
+    image: string;
+    text: string;
+    category: string;
+  }
+
+  const blankFields: IRegisterForm = {
     username: "",
     category: "",
     text: "",
@@ -12,21 +19,30 @@ const MessageCreateForm = (): JSX.Element => {
   };
 
   const dispatch = useAppDispatch();
-  const { username } = useAppSelector((state) => state.user);
 
   const [formData, setFormData] = useState(blankFields);
 
-  const changeData = (event: { target: { id: string; value: string } }) => {
+  const changeData = (event: React.BaseSyntheticEvent) => {
     setFormData({
       ...formData,
-      [event.target.id]: event.target.value,
+      [event.target.id]:
+        event.target.type === "file"
+          ? event.target.files?.[0] || ""
+          : event.target.value,
     });
   };
 
   const submitMessage = (event: React.BaseSyntheticEvent) => {
     event.preventDefault();
-    formData.username = username;
-    dispatch(messageCreateThunk(formData));
+
+    const newFormData: FormData | any = new FormData();
+
+    newFormData.append("category", formData.category);
+    newFormData.append("text", formData.text);
+    newFormData.append("username", formData.username);
+    newFormData.append("image", formData.image);
+
+    dispatch(messageCreateThunk(newFormData));
     setFormData(blankFields);
   };
 
@@ -64,9 +80,7 @@ const MessageCreateForm = (): JSX.Element => {
           id="image"
           name="image"
           accept="image/png, image/jpeg"
-          value={formData.image}
           onChange={changeData}
-          autoComplete="off"
         />
         <button
           type="submit"
