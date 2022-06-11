@@ -10,6 +10,7 @@ describe("Given a MineMessageCard component", () => {
         id: "fakeId",
         text: "A message posted in the BD",
         image: "aFakeImageUrl",
+        imageBackup: "aFakeImageUrl",
         category: "Leisure",
         author: "loggedUser",
       };
