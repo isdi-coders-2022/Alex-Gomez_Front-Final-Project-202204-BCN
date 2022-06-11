@@ -7,6 +7,7 @@ export const mockMessage = [
     id: "9382384824242309432f",
     text: "First message posted in the BD",
     image: "https://www.fake.org",
+    imageBackup: "https://www.fake.org",
     category: "Locations",
     author: "Writer1",
   },
@@ -14,6 +15,7 @@ export const mockMessage = [
     id: "wrerwweawegqgqrqggr",
     text: "Second message posted in the BD",
     image: "https:/www.fake.com",
+    imageBackup: "https://www.fake.org",
     category: "Locations",
     author: "Writer2",
   },
@@ -23,6 +25,7 @@ export const oneMockMessage = {
   id: "wrerwweawegqgqrqggr",
   text: "Second message posted in the BD",
   image: "https:/www.fake.com",
+  imageBackup: "https://www.fake.org",
   category: "Locations",
   author: "Writer2",
 };
@@ -32,6 +35,7 @@ export const mockCreateData = {
   category: "Locations",
   text: "Happy location",
   image: "A file",
+  imageBackup: "https://www.fake.org",
 };
 
 export const mockId = "123456789";
@@ -41,10 +45,6 @@ const mockDeleteResponse = {
 };
 
 const mockCreateResponse = {
-  message: "Item created correctly",
-};
-
-const mockGotResponse = {
   message: "Item created correctly",
 };
 
@@ -70,7 +70,7 @@ export const handlers = [
   rest.get(
     `${process.env.REACT_APP_API_URL}messages/one/${mockId}`,
     (req, res, ctx) =>
-      res(ctx.status(200), ctx.json({ messages: mockGotResponse }))
+      res(ctx.status(200), ctx.json({ messages: oneMockMessage }))
   ),
 
   rest.post(

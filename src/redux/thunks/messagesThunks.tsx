@@ -9,11 +9,12 @@ import {
   deleteMessageActionCreator,
   loadMessagesActionCreator,
 } from "../features/messagesSlice";
-import { loadOneMessagesActionCreator } from "../features/oneMessageSlice";
+import { loadOneMessageActionCreator } from "../features/oneMessageSlice";
 import { AppDispatch } from "../store/store";
 
 interface Message {
   image: any;
+  imageBackup: any;
   text: string;
   category: string;
   author: string;
@@ -76,8 +77,8 @@ export const messageGetThunk =
     try {
       startLoadingModal("Getting message....");
       const urlPath = `${process.env.REACT_APP_API_URL}messages/one/${id}`;
-      await axios.get(urlPath, getAuthHeader());
-      dispatch(loadOneMessagesActionCreator(id));
+      const { data: message } = await axios.get(urlPath, getAuthHeader());
+      dispatch(loadOneMessageActionCreator(message));
       stopOkLoadingModal(`Message got successfully`);
     } catch (error: any) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);
@@ -90,6 +91,7 @@ export const messageCreateThunk =
     category: string;
     text: string;
     image: string;
+    imageBackup: string;
   }) =>
   async (dispatch: AppDispatch) => {
     try {
