@@ -35,7 +35,7 @@ describe("Given a oneMessageSlice reducer", () => {
       const action = loadOneMessageActionCreator(payload);
       const loadedMessage = oneMessageSlice(initialState, action);
 
-      expect(loadedMessage).toBeCalled();
+      expect(loadedMessage).not.toBeNull;
     });
   });
 });
