@@ -7,6 +7,7 @@ describe("Given a messageSlice reducer", () => {
       interface State {
         id: string;
         image: string;
+        imageBackup: string;
         text: string;
         category: string;
         author: string;

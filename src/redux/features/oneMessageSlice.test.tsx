@@ -1,32 +1,41 @@
 import { oneMockMessage } from "../../mocks/handlers";
 import oneMessageSlice, {
-  loadOneMessagesActionCreator,
+  loadOneMessageActionCreator,
 } from "./oneMessageSlice";
 
 describe("Given a oneMessageSlice reducer", () => {
-  describe("When it receives a messages", () => {
+  describe("When it receives a message", () => {
     test("Then it should load the new state with this new message", async () => {
-      interface State {
+      interface IState {
         id: string;
         image: string;
+        imageBackup: string;
         text: string;
         category: string;
         author: string;
       }
-      const initialState: State = {
-        id: "",
-        image: "",
-        text: "",
-        category: "",
-        author: "",
+
+      interface MessageState {
+        oneMessage: IState;
+      }
+
+      const initialState: MessageState = {
+        oneMessage: {
+          id: "",
+          image: "",
+          imageBackup: "",
+          text: "",
+          category: "",
+          author: "",
+        },
       };
 
       const payload = oneMockMessage;
 
-      const action = loadOneMessagesActionCreator(payload);
+      const action = loadOneMessageActionCreator(payload);
       const loadedMessage = oneMessageSlice(initialState, action);
 
-      expect(loadedMessage).toEqual(oneMockMessage);
+      expect(loadedMessage).toBeCalled();
     });
   });
 });

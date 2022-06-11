@@ -1,31 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface State {
+interface IState {
   id: string;
   image: string;
+  imageBackup: string;
   text: string;
   category: string;
   author: string;
 }
 
-const initialState: State = {
-  id: "",
-  image: "",
-  text: "",
-  category: "",
-  author: "",
+interface MessageState {
+  oneMessage: IState;
+}
+
+const initialState: MessageState = {
+  oneMessage: {
+    id: "",
+    image: "",
+    imageBackup: "",
+    text: "",
+    category: "",
+    author: "",
+  },
 };
 
 const oneMessageSlice = createSlice({
-  name: "oneMessage",
+  name: "message",
   initialState,
   reducers: {
-    loadOneMessage: (oneMessage, action) => ({ ...action.payload }),
+    loadOneMessage: (message, action: PayloadAction<IState>) => ({
+      oneMessage: { ...action.payload },
+    }),
     blankState: () => initialState,
   },
 });
 
-export const { loadOneMessage: loadOneMessagesActionCreator } =
+export const { loadOneMessage: loadOneMessageActionCreator } =
   oneMessageSlice.actions;
 
 export default oneMessageSlice.reducer;
