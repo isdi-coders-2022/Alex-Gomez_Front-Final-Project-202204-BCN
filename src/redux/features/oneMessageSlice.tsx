@@ -35,7 +35,9 @@ const oneMessageSlice = createSlice({
   },
 });
 
-export const { loadOneMessage: loadOneMessageActionCreator } =
-  oneMessageSlice.actions;
+export const {
+  loadOneMessage: loadOneMessageActionCreator,
+  blankState: resetOneMessageActionCreator,
+} = oneMessageSlice.actions;
 
 export default oneMessageSlice.reducer;
