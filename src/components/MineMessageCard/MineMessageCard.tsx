@@ -9,6 +9,7 @@ interface IMessage {
   message: {
     id: string;
     image: string;
+    imageBackup: string;
     text: string;
     category: string;
     author: string;
@@ -16,7 +17,7 @@ interface IMessage {
 }
 
 const MineMessageCard = ({
-  message: { id, image, text, category, author },
+  message: { id, image, imageBackup, text, category, author },
 }: IMessage): JSX.Element => {
   const dispatch = useAppDispatch();
 
@@ -30,7 +31,8 @@ const MineMessageCard = ({
         <img
           className="img"
           crossOrigin=""
-          src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
+          //src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
+          src={imageBackup}
           alt={`pic by ${author}`}
         />
         <p className="category">{category}</p>

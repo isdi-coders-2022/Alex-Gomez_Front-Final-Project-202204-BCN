@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 interface State {
   id: string;
   image: string;
+  imageBackup: string;
   text: string;
   category: string;
   author: string;

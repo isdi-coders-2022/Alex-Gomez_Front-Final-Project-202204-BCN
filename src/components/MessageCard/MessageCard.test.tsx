@@ -11,6 +11,8 @@ describe("Given a MessageCard component", () => {
         text: "First message posted in the BD",
         image:
           "https://upload.wikimedia.org/wikipedia/commons/8/8f/ItsukushimaTorii73…",
+        imageBackup:
+          "https://upload.wikimedia.org/wikipedia/commons/8/8f/ItsukushimaTorii73…",
         category: "Locations",
         author: "Writer",
       };
