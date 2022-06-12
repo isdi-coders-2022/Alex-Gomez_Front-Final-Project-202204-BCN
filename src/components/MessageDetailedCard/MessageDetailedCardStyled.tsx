@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MineMessageCardStyled = styled.li`
+const MessageDetailedCardStyled = styled.li`
   margin: 1rem;
 
   .container {
@@ -17,11 +17,6 @@ const MineMessageCardStyled = styled.li`
     border-radius: 0.5rem 0.5rem 0 0;
     width: 100%;
   }
-
-  .img:hover {
-    cursor: pointer;
-  }
-
   p,
   span {
     margin-left: 1rem;
@@ -63,12 +58,6 @@ const MineMessageCardStyled = styled.li`
     margin-bottom: 1rem;
     border-radius: 0.5rem;
   }
-
-  @media (min-width: 400px) {
-    .container {
-      width: 300px;
-    }
-  }
 `;
 
-export default MineMessageCardStyled;
+export default MessageDetailedCardStyled;

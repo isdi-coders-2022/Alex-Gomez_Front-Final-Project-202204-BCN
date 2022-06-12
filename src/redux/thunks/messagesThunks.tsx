@@ -8,6 +8,7 @@ import {
   createMessageActionCreator,
   deleteMessageActionCreator,
   loadMessagesActionCreator,
+  updateMessageActionCreator,
 } from "../features/messagesSlice";
 import { loadOneMessageActionCreator } from "../features/oneMessageSlice";
 import { AppDispatch } from "../store/store";
@@ -77,7 +78,9 @@ export const messageGetThunk =
     try {
       startLoadingModal("Getting message....");
       const urlPath = `${process.env.REACT_APP_API_URL}messages/one/${id}`;
-      const { data: message } = await axios.get(urlPath, getAuthHeader());
+      const {
+        data: { message },
+      } = await axios.get(urlPath, getAuthHeader());
       dispatch(loadOneMessageActionCreator(message));
       stopOkLoadingModal(`Message got successfully`);
     } catch (error: any) {
@@ -101,6 +104,27 @@ export const messageCreateThunk =
       await axios.post(urlPath, formData, getAuthHeader());
       dispatch(createMessageActionCreator);
       stopOkLoadingModal("Message Published correctly!");
+    } catch (error) {
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    }
+  };
+
+export const messageUpdateThunk =
+  (formData: {
+    id: string;
+    username: string;
+    category: string;
+    text: string;
+    image: string;
+    imageBackup: string;
+  }) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      startLoadingModal("Updating message....");
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/update/${formData.id}`;
+      await axios.put(urlPath, formData, getAuthHeader());
+      dispatch(updateMessageActionCreator(formData.id));
+      stopOkLoadingModal("Message updated correctly!");
     } catch (error) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }

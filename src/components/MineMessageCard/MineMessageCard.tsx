@@ -4,6 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useAppDispatch } from "../../redux/hooks";
 import { messageDeleteThunk } from "../../redux/thunks/messagesThunks";
+import { useNavigate } from "react-router-dom";
 
 interface IMessage {
   message: {
@@ -20,26 +21,41 @@ const MineMessageCard = ({
   message: { id, image, imageBackup, text, category, author },
 }: IMessage): JSX.Element => {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const deleteMessage = () => {
     dispatch(messageDeleteThunk(id));
+  };
+
+  const editMessage = () => {
+    navigate(`/message-edit/${id}`);
+  };
+
+  const detailMessage = () => {
+    navigate(`/message-detail/${id}`);
   };
 
   return (
     <MineMessageCardStyled>
       <div className="container">
         <img
+          onClick={detailMessage}
           className="img"
           crossOrigin=""
-          //src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
           src={imageBackup}
           alt={`pic by ${author}`}
         />
         <p className="category">{category}</p>
-        <p className="text">{text}</p>
+        <p className="text">{`${
+          text.length < 60 ? text : text.slice(0, 60).concat("...")
+        }`}</p>
         <span className="author">by: {author}</span>
         <div className="buttons">
-          <Button className="edit" variant="outlined" startIcon={<EditIcon />}>
+          <Button
+            onClick={editMessage}
+            className="edit"
+            variant="outlined"
+            startIcon={<EditIcon />}
+          >
             Edit
           </Button>
           <Button

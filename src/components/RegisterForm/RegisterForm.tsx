@@ -13,7 +13,6 @@ const RegisterForm = (): JSX.Element => {
   };
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState(blankFields);
 
   const changeData = (event: { target: { id: string; value: string } }) => {

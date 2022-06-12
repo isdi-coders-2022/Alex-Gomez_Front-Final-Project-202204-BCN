@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import MineMessageCard from "./MineMessageCard";
 
@@ -16,9 +17,11 @@ describe("Given a MineMessageCard component", () => {
       };
 
       render(
-        <Provider store={store}>
-          <MineMessageCard message={Message} />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MineMessageCard message={Message} />
+          </Provider>
+        </BrowserRouter>
       );
 
       const renderedImage = screen.getByAltText("pic by loggedUser");

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import MessageCardStyled from "./MessageCardStyled";
 
 interface IMessage {
@@ -14,18 +15,25 @@ interface IMessage {
 const MessageCard = ({
   message: { id, image, imageBackup, text, category, author },
 }: IMessage): JSX.Element => {
+  const navigate = useNavigate();
+  const detailMessage = () => {
+    navigate(`/message-detail/${id}`);
+  };
+
   return (
     <MessageCardStyled>
       <div className="container">
         <img
+          onClick={detailMessage}
           className="img"
           crossOrigin=""
           src={imageBackup}
-          //src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
           alt={`pic by ${author}`}
         />
         <p className="category">{category}</p>
-        <p className="text">{text}</p>
+        <p className="text">{`${
+          text.length < 60 ? text : text.slice(0, 60).concat("...")
+        }`}</p>
         <span className="author">by: {author}</span>
       </div>
     </MessageCardStyled>
