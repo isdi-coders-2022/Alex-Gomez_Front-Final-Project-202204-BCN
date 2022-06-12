@@ -8,6 +8,7 @@ import NotLoggedCheck from "./redux/utils/NotLoggedCheck/NotLoggedCheck";
 import MessageCreatePage from "./pages/MessageCreatePage/MessageCreatePage";
 import MineMessageListPage from "./pages/MineMessageList/MineMessageListPage";
 import MessageEditPage from "./pages/MessageEditPage/MessageEditPage";
+import MessageDetailPage from "./pages/MessageDetailPage/MessageDetailPage";
 
 function App() {
   return (
@@ -67,6 +68,15 @@ function App() {
           element={
             <LoggedCheck>
               <MessageEditPage />
+            </LoggedCheck>
+          }
+        />
+
+        <Route
+          path="/message-detail/:id"
+          element={
+            <LoggedCheck>
+              <MessageDetailPage />
             </LoggedCheck>
           }
         />
