@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface State {
+export interface State {
   id: string;
   image: string;
   imageBackup: string;
@@ -19,6 +19,12 @@ const messageSlice = createSlice({
     deleteMessage: (messages, action) =>
       messages.filter((message) => message.id !== action.payload),
     createMessage: (messages, action) => [...messages, action.payload],
+    updateMessage: (messages, action) =>
+      messages.map((message) =>
+        message.id === action.payload.id
+          ? { ...action.payload }
+          : { ...message }
+      ),
   },
 });
 
@@ -26,6 +32,7 @@ export const {
   loadMessages: loadMessagesActionCreator,
   deleteMessage: deleteMessageActionCreator,
   createMessage: createMessageActionCreator,
+  updateMessage: updateMessageActionCreator,
 } = messageSlice.actions;
 
 export default messageSlice.reducer;
