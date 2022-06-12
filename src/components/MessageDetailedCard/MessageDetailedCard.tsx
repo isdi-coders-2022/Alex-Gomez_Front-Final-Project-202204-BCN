@@ -14,7 +14,6 @@ const MessageDetailedCard = (): JSX.Element => {
 
   const message = useAppSelector((state) => state.message);
   const actualmessage = message.text;
-  console.log(message);
 
   return (
     <MessageDetailedCardStyled>
@@ -25,7 +24,6 @@ const MessageDetailedCard = (): JSX.Element => {
               className="img"
               crossOrigin=""
               src={message.imageBackup}
-              //src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
               alt={`pic by ${message.author}`}
             />
             <p className="category">{message.category}</p>
