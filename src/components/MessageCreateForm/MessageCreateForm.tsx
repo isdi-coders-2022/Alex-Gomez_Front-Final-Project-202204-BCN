@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { messageCreateThunk } from "../../redux/thunks/messagesThunks";
+import {
+  messageCreateThunk,
+  messageUpdateThunk,
+} from "../../redux/thunks/messagesThunks";
 import MessageCreateFormStyled from "./MessageCreateFormStyled";
 
 const MessageCreateForm = (): JSX.Element => {
   interface IRegisterForm {
+    id: string;
     image: string;
     text: string;
     category: string;
   }
 
   const blankFields: IRegisterForm = {
+    id: "",
     category: "",
     text: "",
     image: "",
   };
-
   const dispatch = useAppDispatch();
 
   const [formData, setFormData] = useState(blankFields);
 
-  const { oneMessage } = useAppSelector((state) => state.oneMessage);
+  const message = useAppSelector((state) => state.message);
 
   useEffect(() => {
-    if (oneMessage) {
-      setFormData(oneMessage);
+    if (message) {
+      setFormData(message);
     }
-  }, [oneMessage]);
+  }, [message]);
 
   const changeData = (event: React.BaseSyntheticEvent) => {
     setFormData({
@@ -45,10 +49,10 @@ const MessageCreateForm = (): JSX.Element => {
 
     newFormData.append("category", formData.category);
     newFormData.append("text", formData.text);
-
     newFormData.append("image", formData.image);
-
-    dispatch(messageCreateThunk(newFormData));
+    formData.id
+      ? dispatch(messageUpdateThunk(newFormData))
+      : dispatch(messageCreateThunk(newFormData));
     setFormData(blankFields);
   };
 
