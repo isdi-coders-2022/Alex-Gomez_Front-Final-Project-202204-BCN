@@ -18,6 +18,10 @@ const MessageCardStyled = styled.li`
     width: 100%;
   }
 
+  .img:hover {
+    cursor: pointer;
+  }
+
   p,
   span {
     margin-left: 1rem;
