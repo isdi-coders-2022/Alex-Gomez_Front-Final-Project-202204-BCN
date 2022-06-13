@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import {
   startLoadingModal,
   stopErrorLoadingModal,
@@ -120,6 +121,8 @@ export const messageCreateThunk =
       stopOkLoadingModal("Message Published correctly!");
     } catch (error) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    } finally {
+      toast.dismiss();
     }
   };
 
@@ -141,5 +144,7 @@ export const messageUpdateThunk =
       stopOkLoadingModal("Message updated correctly!");
     } catch (error) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    } finally {
+      toast.dismiss();
     }
   };
