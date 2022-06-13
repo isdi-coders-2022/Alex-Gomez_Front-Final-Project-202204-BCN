@@ -121,7 +121,6 @@ export const messageUpdateThunk =
   async (dispatch: AppDispatch) => {
     try {
       startLoadingModal("Updating message....");
-      debugger;
       const urlPath = `${process.env.REACT_APP_API_URL}messages/update/${formData.id}`;
       await axios.put(urlPath, formData, getAuthHeader());
       dispatch(updateMessageActionCreator(formData.id));

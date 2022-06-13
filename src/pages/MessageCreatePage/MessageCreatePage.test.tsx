@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { mockCreateData } from "../../mocks/handlers";
 import store from "../../redux/store/store";
 import MessageCreatePage from "./MessageCreatePage";
 
