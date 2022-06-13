@@ -2,12 +2,12 @@ import MessageCreateForm from "../../components/MessageCreateForm/MessageCreateF
 import NavBar from "../../components/NavBar/NavBar";
 import MessageCreatePageStyled from "./MessageCreatePageStyled";
 
-const MessageCreatePage = () => {
+const MessageCreatePage = (): JSX.Element => {
   return (
     <>
       <NavBar />
       <MessageCreatePageStyled>
-        <MessageCreateForm />
+        <MessageCreateForm message={null} />
       </MessageCreatePageStyled>
     </>
   );

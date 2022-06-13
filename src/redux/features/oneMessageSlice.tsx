@@ -15,10 +15,13 @@ const oneMessageSlice = createSlice({
   initialState,
   reducers: {
     loadOneMessage: (message, action) => ({ ...action.payload }),
+    resetMessage: () => initialState,
   },
 });
 
-export const { loadOneMessage: loadOneMessageActionCreator } =
-  oneMessageSlice.actions;
+export const {
+  loadOneMessage: loadOneMessageActionCreator,
+  resetMessage: resetMessageActionCreator,
+} = oneMessageSlice.actions;
 
 export default oneMessageSlice.reducer;

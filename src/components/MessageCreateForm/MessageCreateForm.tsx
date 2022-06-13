@@ -1,36 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import React, { useState } from "react";
+import { State } from "../../redux/features/messagesSlice";
+import { resetMessageActionCreator } from "../../redux/features/oneMessageSlice";
+import { useAppDispatch } from "../../redux/hooks";
 import {
   messageCreateThunk,
   messageUpdateThunk,
 } from "../../redux/thunks/messagesThunks";
 import MessageCreateFormStyled from "./MessageCreateFormStyled";
 
-const MessageCreateForm = (): JSX.Element => {
-  interface IRegisterForm {
-    id: string;
-    image: string;
-    text: string;
-    category: string;
-  }
+type messageProp = {
+  message: State | null;
+};
 
-  const blankFields: IRegisterForm = {
-    id: "",
-    category: "",
-    text: "",
-    image: "",
+const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
+  const formInitialState = {
+    id: message ? message.id : "",
+    author: message ? message.author : "",
+    category: message ? message.category : "",
+    text: message ? message.text : "",
+    image: message ? message.image : "",
+    imageBackup: message ? message.imageBackup : "",
   };
+
   const dispatch = useAppDispatch();
-
-  const [formData, setFormData] = useState(blankFields);
-
-  const message = useAppSelector((state) => state.message);
-
-  useEffect(() => {
-    if (message) {
-      setFormData(message);
-    }
-  }, [message]);
+  const [formData, setFormData] = useState(formInitialState);
 
   const changeData = (event: React.BaseSyntheticEvent) => {
     setFormData({
@@ -42,18 +35,28 @@ const MessageCreateForm = (): JSX.Element => {
     });
   };
 
+  const resetForm = () => {
+    setFormData(formInitialState);
+  };
+
   const submitMessage = (event: React.BaseSyntheticEvent) => {
     event.preventDefault();
 
     const newFormData: FormData | any = new FormData();
 
+    if (formData.id) newFormData.id = formData.id;
+    if (formData.author) newFormData.author = formData.author;
+    if (formData.imageBackup) newFormData.imageBackup = formData.imageBackup;
     newFormData.append("category", formData.category);
     newFormData.append("text", formData.text);
     newFormData.append("image", formData.image);
+
     formData.id
       ? dispatch(messageUpdateThunk(newFormData))
       : dispatch(messageCreateThunk(newFormData));
-    setFormData(blankFields);
+
+    resetForm();
+    dispatch(resetMessageActionCreator());
   };
 
   return (

@@ -1,10 +1,11 @@
-import { mockCreateData } from "../../mocks/handlers";
+import { mockMessageUserData } from "../../mocks/handlers";
 import server from "../../mocks/server";
 import {
   messagesListThunk,
   messageDeleteThunk,
   messageCreateThunk,
   messageGetThunk,
+  messageUpdateThunk,
 } from "./messagesThunks";
 
 beforeEach(() => {
@@ -49,7 +50,7 @@ describe("Given a messageDeleteThunk", () => {
 describe("Given a messageCreateThunk", () => {
   describe("When it's invoked with an formData", () => {
     test("Then it shouls call the dispatch", async () => {
-      const thunk = messageCreateThunk(mockCreateData);
+      const thunk = messageCreateThunk(mockMessageUserData);
 
       await thunk(dispatch);
 
@@ -64,6 +65,18 @@ describe("Given a messageGetThunk", () => {
       const id = "123456789";
 
       const thunk = messageGetThunk(id);
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a messageUpdateThunk", () => {
+  describe("When it's instantiated with an id", () => {
+    test("Then it shouls call the dispatch", async () => {
+      const thunk = messageUpdateThunk(mockMessageUserData);
 
       await thunk(dispatch);
 

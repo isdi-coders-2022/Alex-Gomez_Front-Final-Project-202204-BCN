@@ -9,8 +9,27 @@ import MessageCreatePage from "./pages/MessageCreatePage/MessageCreatePage";
 import MineMessageListPage from "./pages/MineMessageList/MineMessageListPage";
 import MessageEditPage from "./pages/MessageEditPage/MessageEditPage";
 import MessageDetailPage from "./pages/MessageDetailPage/MessageDetailPage";
+import jwtDecode from "jwt-decode";
+import { useAppDispatch } from "./redux/hooks";
+import { useEffect } from "react";
+import {
+  loginActionCreator,
+  logoutActionCreator,
+} from "./redux/features/userSlice";
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const userInfo = jwtDecode(token);
+      dispatch(loginActionCreator(userInfo));
+    } else {
+      dispatch(logoutActionCreator());
+    }
+  }, [dispatch]);
+
   return (
     <>
       <Routes>

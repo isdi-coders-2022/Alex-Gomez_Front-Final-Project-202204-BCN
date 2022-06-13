@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MessageCreateForm from "../../components/MessageCreateForm/MessageCreateForm";
 import NavBar from "../../components/NavBar/NavBar";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { messageGetThunk } from "../../redux/thunks/messagesThunks";
 import MessageEditPageStyled from "./MessageEditPageStyled";
 
@@ -14,11 +14,13 @@ const MessageEditPage = (): JSX.Element => {
     dispatch(messageGetThunk(id as string));
   }, [dispatch, id]);
 
+  const message = useAppSelector((state) => state.message);
+
   return (
     <>
       <NavBar />
       <MessageEditPageStyled>
-        <MessageCreateForm />
+        <MessageCreateForm message={message} />
       </MessageEditPageStyled>
     </>
   );

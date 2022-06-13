@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { mockCreateData } from "../../mocks/handlers";
 import store from "../../redux/store/store";
 import MessageCreateForm from "./MessageCreateForm";
 
@@ -11,7 +12,7 @@ describe("Given a MessageCreateForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <MessageCreateForm />
+            <MessageCreateForm message={mockCreateData} />
           </Provider>
         </BrowserRouter>
       );
@@ -22,34 +23,27 @@ describe("Given a MessageCreateForm component", () => {
     });
   });
 
-  describe("When it's instantiated and publish button is pressed", () => {
-    test("Then it should call the submitPublish function", () => {
-      render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <MessageCreateForm />
-          </Provider>
-        </BrowserRouter>
-      );
+  test("Then it should call the submitPublish function", () => {
+    render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <MessageCreateForm message={mockCreateData} />
+        </Provider>
+      </BrowserRouter>
+    );
 
-      const messageLabel = "Write your message";
-      const messageText = "My wrotten message";
-      const messageInput = screen.getByLabelText(messageLabel);
-      userEvent.type(messageInput, messageText);
+    const messageLabel = "Write your message";
+    const messageInput = screen.getByLabelText(messageLabel);
 
-      const categoryLabel = "Category";
-      const categoryText = "Tradition";
-      const categoryInput = screen.getByLabelText(categoryLabel);
-      userEvent.type(categoryInput, categoryText);
+    const categoryLabel = "Category";
+    const categoryInput = screen.getByLabelText(categoryLabel);
 
-      const imageLabel = "Upload image";
-      const imageText = "";
-      const imageInput = screen.getByLabelText(imageLabel);
-      userEvent.type(imageInput, imageText);
+    expect(messageInput).toHaveValue(mockCreateData.text);
+    expect(categoryInput).toHaveValue(mockCreateData.category);
 
-      expect(messageInput).toHaveValue(messageText);
-      expect(categoryInput).toHaveValue(categoryText);
-      expect(imageInput).toHaveValue(imageText);
-    });
+    const button = screen.getByRole("button", { name: /Publish/i });
+
+    expect(button).toBeEnabled();
+    userEvent.click(button);
   });
 });
