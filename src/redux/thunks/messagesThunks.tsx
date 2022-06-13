@@ -60,6 +60,21 @@ export const mineMessagesListThunk =
     }
   };
 
+export const getMessagesByCategoryThunk =
+  (category: string) => async (dispatch: AppDispatch) => {
+    try {
+      startLoadingModal("Loading messages...");
+      const urlPath = `${process.env.REACT_APP_API_URL}messages/category/${category}`;
+      const {
+        data: { messages },
+      } = await axios.get<AxiosMessageResponse>(urlPath, getAuthHeader());
+      dispatch(loadMessagesActionCreator(messages));
+      stopOkLoadingModal(`Messages Loaded`);
+    } catch (error: any) {
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    }
+  };
+
 export const messageDeleteThunk =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
