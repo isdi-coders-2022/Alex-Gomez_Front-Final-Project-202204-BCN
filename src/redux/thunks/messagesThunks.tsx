@@ -5,7 +5,7 @@ import {
   stopOkLoadingModal,
 } from "../../components/LoadingModal/LoadingModal";
 import {
-  createMessageActionCreator,
+  //createMessageActionCreator,
   deleteMessageActionCreator,
   loadMessagesActionCreator,
   updateMessageActionCreator,
@@ -112,12 +112,11 @@ export const messageCreateThunk =
     imageBackup: string;
   }) =>
   async (dispatch: AppDispatch) => {
+    startLoadingModal("Saving message....");
     try {
-      startLoadingModal("Saving message....");
       const urlPath = `${process.env.REACT_APP_API_URL}messages/mine/create`;
-
       await axios.post(urlPath, formData, getAuthHeader());
-      dispatch(createMessageActionCreator);
+      dispatch(messagesListThunk);
       stopOkLoadingModal("Message Published correctly!");
     } catch (error) {
       stopErrorLoadingModal(`Something gone wrong: ${error}`);

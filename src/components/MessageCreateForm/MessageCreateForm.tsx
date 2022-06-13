@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { State } from "../../redux/features/messagesSlice";
 import { resetMessageActionCreator } from "../../redux/features/oneMessageSlice";
 import { useAppDispatch } from "../../redux/hooks";
@@ -22,6 +23,7 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
     imageBackup: message ? message.imageBackup : "",
   };
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(formInitialState);
 
@@ -57,6 +59,7 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
 
     resetForm();
     dispatch(resetMessageActionCreator());
+    navigate("/");
   };
 
   return (

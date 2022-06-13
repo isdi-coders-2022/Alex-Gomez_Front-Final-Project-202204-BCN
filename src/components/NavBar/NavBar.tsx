@@ -16,7 +16,7 @@ const NavBar = (): JSX.Element => {
   };
 
   const goToHome = (): void => {
-    navigate("/messageslist");
+    navigate("/");
   };
 
   const goToMyMessages = (): void => {
