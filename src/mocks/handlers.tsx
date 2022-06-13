@@ -31,11 +31,21 @@ export const oneMockMessage = {
 };
 
 export const mockCreateData = {
-  username: "Luis",
+  id: "12345tgh",
+  author: "Luis",
   category: "Locations",
   text: "Happy location",
   image: "A file",
   imageBackup: "https://www.fake.org",
+};
+
+export const mockMessageUserData = {
+  id: "987665",
+  username: "Marta",
+  category: "Gastronomy",
+  text: "Delicious dish",
+  image: "file",
+  imageBackup: "https://www.fakeweb.org",
 };
 
 export const mockId = "123456789";
@@ -75,6 +85,12 @@ export const handlers = [
 
   rest.post(
     `${process.env.REACT_APP_API_URL}messages/mine/create`,
+    (req, res, ctx) =>
+      res(ctx.status(200), ctx.json({ messages: mockCreateResponse }))
+  ),
+
+  rest.put(
+    `${process.env.REACT_APP_API_URL}messages/update/${mockMessageUserData.id}`,
     (req, res, ctx) =>
       res(ctx.status(200), ctx.json({ messages: mockCreateResponse }))
   ),
