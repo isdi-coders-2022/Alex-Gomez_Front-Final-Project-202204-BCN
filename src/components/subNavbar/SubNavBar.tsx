@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { getMessagesByCategoryThunk } from "../../redux/thunks/messagesThunks";
@@ -7,7 +8,6 @@ const SubNavBar = (): JSX.Element => {
   const resetForm = {
     category: "",
   };
-  debugger;
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState(resetForm);
 
@@ -43,9 +43,14 @@ const SubNavBar = (): JSX.Element => {
               <option value="Gastronomy">Gastronomy</option>
               <option value="Locations">Locations</option>
             </select>
-            <button type="submit" value="send">
+            <Button
+              variant="contained"
+              type="submit"
+              className="button"
+              value="send"
+            >
               Filter
-            </button>
+            </Button>
           </form>
         </div>
       </>
