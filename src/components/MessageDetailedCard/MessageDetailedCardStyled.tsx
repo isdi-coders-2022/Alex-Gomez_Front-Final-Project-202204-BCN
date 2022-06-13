@@ -31,11 +31,6 @@ const MessageDetailedCardStyled = styled.li`
     align-self: self-end;
   }
 
-  .text {
-    height: 4rem;
-    word-wrap: break-word;
-  }
-
   .author {
     margin-bottom: 1rem;
     font-weight: 500;
