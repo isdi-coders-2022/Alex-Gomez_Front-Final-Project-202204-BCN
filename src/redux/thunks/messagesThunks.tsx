@@ -42,7 +42,7 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
     dispatch(loadMessagesActionCreator(messages));
     stopOkLoadingModal("Messages loaded");
   } catch (error: any) {
-    stopErrorLoadingModal(`Something gone wrong: ${error.response.data.msg}`);
+    stopErrorLoadingModal(`Something gone wrong: ${error}`);
   }
 };
 
@@ -57,7 +57,7 @@ export const mineMessagesListThunk =
       dispatch(loadMessagesActionCreator(messages));
       stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
-      stopErrorLoadingModal(`Something gone wrong: ${error.response.data.msg}`);
+      stopErrorLoadingModal(`Something gone wrong: ${error}`);
     }
   };
 
