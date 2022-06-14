@@ -37,7 +37,7 @@ const MessageCardStyled = styled.li`
   }
 
   .text {
-    height: 4rem;
+    height: 3rem;
     word-wrap: break-word;
   }
 

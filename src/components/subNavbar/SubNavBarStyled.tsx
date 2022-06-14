@@ -10,10 +10,8 @@ const SubNavBarStyled = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 3rem;
     height: 2.5rem;
     color: white;
-    font-weight: bold;
   }
   .category {
     margin-left: 1rem;
@@ -21,6 +19,14 @@ const SubNavBarStyled = styled.div`
   }
   .button {
     color: white;
+  }
+  @media (min-width: 450px) {
+    justify-content: flex-end;
+
+    .button {
+      margin-right: 1rem;
+      margin-left: 1rem;
+    }
   }
 `;
 

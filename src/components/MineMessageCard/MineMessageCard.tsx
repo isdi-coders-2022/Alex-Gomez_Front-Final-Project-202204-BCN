@@ -40,7 +40,6 @@ const MineMessageCard = ({
         <img
           onClick={detailMessage}
           className="img"
-          crossOrigin=""
           src={imageBackup}
           alt={`pic by ${author}`}
         />

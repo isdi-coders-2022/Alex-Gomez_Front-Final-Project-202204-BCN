@@ -53,13 +53,17 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
     newFormData.append("text", formData.text);
     newFormData.append("image", formData.image);
 
-    formData.id
-      ? dispatch(messageUpdateThunk(newFormData))
-      : dispatch(messageCreateThunk(newFormData));
-
-    resetForm();
-    dispatch(resetMessageActionCreator());
-    navigate("/");
+    if (formData.id) {
+      dispatch(messageUpdateThunk(newFormData));
+      resetForm();
+      dispatch(resetMessageActionCreator());
+      navigate("/myMessageList");
+    } else {
+      dispatch(messageCreateThunk(newFormData));
+      resetForm();
+      dispatch(resetMessageActionCreator());
+      navigate("/");
+    }
   };
 
   return (

@@ -26,9 +26,8 @@ const MessageCard = ({
         <img
           onClick={detailMessage}
           className="img"
-          crossOrigin=""
-          src={imageBackup}
           alt={`pic by ${author}`}
+          src={imageBackup}
         />
         <p className="category">{category}</p>
         <p className="text">{`${
