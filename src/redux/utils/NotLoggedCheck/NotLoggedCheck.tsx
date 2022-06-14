@@ -14,7 +14,7 @@ const NotLoggedCheck = ({ children }: Props): JSX.Element | null => {
 
   useEffect(() => {
     if (logged) {
-      navigate("/messageslist");
+      navigate("/messages-list");
     }
   }, [logged, navigate]);
 

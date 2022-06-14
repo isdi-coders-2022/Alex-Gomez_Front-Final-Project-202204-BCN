@@ -29,7 +29,7 @@ describe("Given a notLoggedCheck component", () => {
           </NotLoggedCheck>
         </Provider>
       );
-      expect(mockUseNavigate).toHaveBeenCalledWith("/messageslist");
+      expect(mockUseNavigate).toHaveBeenCalledWith("/messages-list");
     });
   });
 
