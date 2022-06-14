@@ -58,6 +58,7 @@ const RegisterForm = (): JSX.Element => {
         />
         <Button
           variant="contained"
+          className="button"
           type="submit"
           value="Send"
           disabled={

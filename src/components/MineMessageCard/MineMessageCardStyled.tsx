@@ -29,6 +29,7 @@ const MineMessageCardStyled = styled.li`
   }
 
   .category {
+    font-weight: 600;
     margin-top: 0.5rem;
     margin-bottom: 0;
     font-style: oblique;
@@ -64,9 +65,9 @@ const MineMessageCardStyled = styled.li`
     border-radius: 0.5rem;
   }
 
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     .container {
-      width: 300px;
+      width: 370px;
     }
   }
 `;

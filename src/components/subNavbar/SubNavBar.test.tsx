@@ -21,7 +21,7 @@ describe("Given a subNavBar component", () => {
       expect(button).toBeEnabled();
       userEvent.click(button);
 
-      expect(screen.getByLabelText("Category")).toBeInTheDocument();
+      expect(screen.getByLabelText("CATEGORY")).toBeInTheDocument();
     });
   });
 });

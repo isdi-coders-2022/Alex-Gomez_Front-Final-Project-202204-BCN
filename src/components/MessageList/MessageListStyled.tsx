@@ -11,7 +11,6 @@ const MessageListStyled = styled.div`
   }
 
   .page-buttons {
-    background-color: rgb(23, 100, 192);
     display: flex;
     justify-content: center;
     align-items: center;
