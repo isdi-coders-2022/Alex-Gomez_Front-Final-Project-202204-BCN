@@ -1,46 +1,60 @@
 import styled from "styled-components";
 
 const MessageCreateFormStyled = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  .createForm {
-    margin: 1rem;
+  form {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100vw;
+    font-size: 1rem;
   }
 
-  select,
-  textarea,
-  input {
-    width: 80vw;
+  label {
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    font-weight: bold;
+  }
+
+  input,
+  select {
+    width: 70vw;
+    border-radius: 4px;
+    font-size: 1.2rem;
+  }
+
+  .button {
+    width: 70vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   textarea {
     resize: none;
+    width: 70vw;
+    border-radius: 4px;
+    font-size: 1.2rem;
   }
 
-  label {
-    margin: 1rem;
-  }
-
-  button {
-    margin-top: 3rem;
-  }
-
-  @media (min-width: 400px) {
+  @media (min-width: 500px) {
     .createForm {
-      width: 390px;
+      margin-top: 2rem;
+    }
+
+    input {
+      width: 50vw;
+      border-radius: 4px;
+      font-size: 1.2rem;
     }
 
     select,
-    textarea,
-    input {
-      width: 390px;
+    textarea {
+      width: 50vw;
+    }
+
+    .button {
+      width: 50vw;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
   }
 `;

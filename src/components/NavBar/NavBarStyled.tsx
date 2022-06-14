@@ -36,12 +36,6 @@ const NavBarStyled = styled.div`
       display: none;
     }
 
-    p {
-      align-items: flex-start;
-      font-weight: bold;
-      color: white;
-    }
-
     .logoutButtonDesktop,
     .createButtonDesktop,
     .homeButtonDesktop,

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { userLoginThunk } from "../../redux/thunks/userThunks";
 import LoginFormStyled from "./LoginFormStyled";
+import Button from "@mui/material/Button";
 
 const LoginForm = (): JSX.Element => {
   const blankFields = {
@@ -46,14 +47,16 @@ const LoginForm = (): JSX.Element => {
           onChange={changeData}
           autoComplete="off"
         />
-        <button
+        <Button
+          variant="contained"
+          className="button"
           type="submit"
           value="Send"
           disabled={formData.username === "" || formData.password === ""}
           onClick={submitLogin}
         >
           Login
-        </button>
+        </Button>
         <span>Still don't have account?</span>
         <Link to="/register">Register</Link>
       </form>
