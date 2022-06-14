@@ -22,7 +22,6 @@ const MessageDetailedCard = (): JSX.Element => {
           <>
             <img
               className="img"
-              crossOrigin=""
               src={message.imageBackup}
               alt={`pic by ${message.author}`}
             />
