@@ -20,7 +20,6 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
     category: message ? message.category : "",
     text: message ? message.text : "",
     image: message ? message.image : "",
-    imageBackup: message ? message.imageBackup : "",
   };
 
   const navigate = useNavigate();
@@ -48,7 +47,6 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
 
     if (formData.id) newFormData.id = formData.id;
     if (formData.author) newFormData.author = formData.author;
-    if (formData.imageBackup) newFormData.imageBackup = formData.imageBackup;
     newFormData.append("category", formData.category);
     newFormData.append("text", formData.text);
     newFormData.append("image", formData.image);
@@ -99,7 +97,7 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
           type="file"
           id="image"
           name="image"
-          accept="image/png, image/jpeg"
+          accept="image/png, image/jpeg, image/webp"
           onChange={changeData}
         />
         <button

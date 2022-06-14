@@ -137,6 +137,7 @@ export const messageUpdateThunk =
       const urlPath = `${process.env.REACT_APP_API_URL}messages/update/${formData.id}`;
       await axios.put(urlPath, formData, getAuthHeader());
       dispatch(updateMessageActionCreator(formData.id));
+      dispatch(mineMessagesListThunk(formData.username));
       toast.success("Message updated correctly!");
     } catch (error) {
       toast.error(`Something gone wrong: ${error}`);
