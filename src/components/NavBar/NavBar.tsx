@@ -4,6 +4,11 @@ import { toast } from "react-toastify";
 import { logoutActionCreator } from "../../redux/features/userSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import NavBarStyled from "./NavBarStyled";
+import IconButton from "@mui/material/IconButton";
+import HomeSharpIcon from "@mui/icons-material/HomeSharp";
+import FormatListBulletedSharpIcon from "@mui/icons-material/FormatListBulletedSharp";
+import BorderColorSharpIcon from "@mui/icons-material/BorderColorSharp";
+import ExitToAppSharpIcon from "@mui/icons-material/ExitToAppSharp";
 
 const NavBar = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -30,7 +35,7 @@ const NavBar = (): JSX.Element => {
   return (
     <NavBarStyled>
       <Button
-        className="homeButton"
+        className="homeButtonDesktop"
         variant="contained"
         type="submit"
         onClick={goToHome}
@@ -38,8 +43,18 @@ const NavBar = (): JSX.Element => {
         Home
       </Button>
 
+      <IconButton
+        className="homeButtonMobile"
+        color="primary"
+        size="large"
+        aria-label="Home button"
+        onClick={goToHome}
+      >
+        <HomeSharpIcon />
+      </IconButton>
+
       <Button
-        className="myMessages"
+        className="myMessagesDesktop"
         variant="contained"
         type="submit"
         onClick={goToMyMessages}
@@ -47,22 +62,53 @@ const NavBar = (): JSX.Element => {
         My messages
       </Button>
 
+      <IconButton
+        className="myMessagesMobile"
+        color="primary"
+        size="large"
+        aria-label="My Messages"
+        onClick={goToMyMessages}
+      >
+        <FormatListBulletedSharpIcon />
+      </IconButton>
+
       <Button
-        className="createButton"
+        className="createButtonDesktop"
         variant="contained"
         type="submit"
         onClick={goToCreateMessage}
       >
         Create message
       </Button>
+
+      <IconButton
+        className="createButtonMobile"
+        color="primary"
+        size="large"
+        aria-label="Create message"
+        onClick={goToCreateMessage}
+      >
+        <BorderColorSharpIcon />
+      </IconButton>
+
       <Button
-        className="logoutButton"
+        className="logoutButtonDesktop"
         variant="contained"
         type="submit"
         onClick={Logout}
       >
         Logout
       </Button>
+
+      <IconButton
+        className="logoutButtonMobile"
+        color="primary"
+        size="large"
+        aria-label="Logout"
+        onClick={Logout}
+      >
+        <ExitToAppSharpIcon />
+      </IconButton>
     </NavBarStyled>
   );
 };
