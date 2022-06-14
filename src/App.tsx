@@ -37,7 +37,7 @@ function App() {
           path="/"
           element={
             <LoggedCheck>
-              <Navigate to="/messageslist" />
+              <Navigate to="/messages-list" />
             </LoggedCheck>
           }
         />
@@ -58,7 +58,7 @@ function App() {
           }
         />
         <Route
-          path="/messageslist"
+          path="/messages-list"
           element={
             <LoggedCheck>
               <MessageListPage />
@@ -66,7 +66,7 @@ function App() {
           }
         />
         <Route
-          path="/myMessageList"
+          path="/my-message-list"
           element={
             <LoggedCheck>
               <MineMessageListPage />
@@ -75,7 +75,7 @@ function App() {
         />
 
         <Route
-          path="/messageCreate"
+          path="/message-create"
           element={
             <LoggedCheck>
               <MessageCreatePage />
