@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { mineMessagesListThunk } from "../../redux/thunks/messagesThunks";
 import MineMessageCard from "../MineMessageCard/MineMessageCard";
 import MineMessageListStyled from "./MineMessageListStyled";
+import Button from "@mui/material/Button";
 
 const MineMessageList = () => {
   interface State {
@@ -37,41 +38,43 @@ const MineMessageList = () => {
   }, [dispatch, username]);
 
   return (
-    <>
+    <div className="container">
       <MineMessageListStyled>
-        {currentPage.map((message) => {
-          return <MineMessageCard key={message.id} message={message} />;
-        })}
+        <>
+          <ul>
+            {currentPage.map((message) => {
+              return <MineMessageCard key={message.id} message={message} />;
+            })}
+          </ul>
+        </>
+        <div className="page-buttons">
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              if (index >= 6) {
+                setIndex(index - 6);
+              }
+            }}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              if (index < messages.length - 6) {
+                setIndex(index + 6);
+              }
+            }}
+          >
+            Next
+          </Button>
+        </div>
       </MineMessageListStyled>
-      <div className="page-buttons">
-        <button
-          onClick={() => {
-            if (index >= 6) {
-              setIndex(index - 6);
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-            }
-          }}
-        >
-          Prev
-        </button>
-        <button
-          onClick={() => {
-            if (index < messages.length - 6) {
-              setIndex(index + 6);
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-            }
-          }}
-        >
-          Next
-        </button>
-      </div>
-    </>
+    </div>
   );
 };
 

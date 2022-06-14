@@ -57,7 +57,9 @@ export const mineMessagesListThunk =
       dispatch(loadMessagesActionCreator(messages));
       stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+      stopErrorLoadingModal(
+        `Something gone wrong: There are no messages in the DB`
+      );
     }
   };
 
