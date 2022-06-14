@@ -4,12 +4,12 @@ import RegisterPageStyled from "./RegisterPageStyled";
 
 const RegisterPage = (): JSX.Element => {
   return (
-    <>
-      <Header />
-      <RegisterPageStyled>
+    <RegisterPageStyled>
+      <div className="maincontainer">
+        <Header />
         <RegisterForm />
-      </RegisterPageStyled>
-    </>
+      </div>
+    </RegisterPageStyled>
   );
 };
 
