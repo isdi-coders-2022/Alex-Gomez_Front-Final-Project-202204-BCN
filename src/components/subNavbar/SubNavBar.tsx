@@ -33,10 +33,9 @@ const SubNavBar = (): JSX.Element => {
   return (
     <SubNavBarStyled>
       <>
-        <div className="subNavBar"></div>
         <div className="filter">
           <form className="searchCategory" onSubmit={submitCategory}>
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category">CATEGORY</label>
             <select
               id="category"
               className="category"
@@ -58,15 +57,14 @@ const SubNavBar = (): JSX.Element => {
             >
               Filter
             </Button>
+            <Button
+              variant="contained"
+              className="button"
+              onClick={resetFilters}
+            >
+              Reset
+            </Button>
           </form>
-          <Button
-            variant="contained"
-            type="submit"
-            className="button"
-            onClick={resetFilters}
-          >
-            Reset
-          </Button>
         </div>
       </>
     </SubNavBarStyled>
