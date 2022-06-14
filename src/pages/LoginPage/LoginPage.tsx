@@ -4,12 +4,12 @@ import LoginPageStyled from "./LoginPageStyled";
 
 const LoginPage = (): JSX.Element => {
   return (
-    <>
-      <Header />
-      <LoginPageStyled>
+    <LoginPageStyled>
+      <div className="maincontainer">
+        <Header />
         <LoginForm />
-      </LoginPageStyled>
-    </>
+      </div>
+    </LoginPageStyled>
   );
 };
 
