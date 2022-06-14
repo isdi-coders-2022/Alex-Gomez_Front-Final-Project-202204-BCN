@@ -20,11 +20,11 @@ const NavBar = (): JSX.Element => {
   };
 
   const goToMyMessages = (): void => {
-    navigate("/myMessageList");
+    navigate("/my-message-list");
   };
 
   const goToCreateMessage = (): void => {
-    navigate("/messageCreate");
+    navigate("/message-create");
   };
 
   return (

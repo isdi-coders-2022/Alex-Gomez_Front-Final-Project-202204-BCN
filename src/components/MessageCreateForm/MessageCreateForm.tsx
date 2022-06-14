@@ -55,7 +55,7 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
       dispatch(messageUpdateThunk(newFormData));
       resetForm();
       dispatch(resetMessageActionCreator());
-      navigate("/myMessageList");
+      navigate("/my-message-list");
     } else {
       dispatch(messageCreateThunk(newFormData));
       resetForm();
