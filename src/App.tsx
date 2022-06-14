@@ -16,6 +16,7 @@ import {
   loginActionCreator,
   logoutActionCreator,
 } from "./redux/features/userSlice";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -99,6 +100,7 @@ function App() {
             </LoggedCheck>
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
