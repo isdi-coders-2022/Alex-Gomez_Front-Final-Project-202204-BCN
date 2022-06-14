@@ -42,7 +42,7 @@ export const messagesListThunk = () => async (dispatch: AppDispatch) => {
     dispatch(loadMessagesActionCreator(messages));
     stopOkLoadingModal("Messages loaded");
   } catch (error: any) {
-    stopErrorLoadingModal(`Something gone wrong: ${error}`);
+    stopErrorLoadingModal(`Something gone wrong: ${error.response.data.msg}`);
   }
 };
 
@@ -57,7 +57,7 @@ export const mineMessagesListThunk =
       dispatch(loadMessagesActionCreator(messages));
       stopOkLoadingModal(`Messages Loaded`);
     } catch (error: any) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
+      stopErrorLoadingModal(`Something gone wrong: ${error.response.data.msg}`);
     }
   };
 
@@ -113,16 +113,13 @@ export const messageCreateThunk =
     imageBackup: string;
   }) =>
   async (dispatch: AppDispatch) => {
-    startLoadingModal("Saving message....");
     try {
       const urlPath = `${process.env.REACT_APP_API_URL}messages/mine/create`;
       await axios.post(urlPath, formData, getAuthHeader());
       dispatch(messagesListThunk);
-      stopOkLoadingModal("Message Published correctly!");
+      toast.success("Message Published correctly!");
     } catch (error) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
-    } finally {
-      toast.dismiss();
+      toast.error(`Something gone wrong: ${error}`);
     }
   };
 
@@ -137,14 +134,11 @@ export const messageUpdateThunk =
   }) =>
   async (dispatch: AppDispatch) => {
     try {
-      startLoadingModal("Updating message....");
       const urlPath = `${process.env.REACT_APP_API_URL}messages/update/${formData.id}`;
       await axios.put(urlPath, formData, getAuthHeader());
       dispatch(updateMessageActionCreator(formData.id));
-      stopOkLoadingModal("Message updated correctly!");
+      toast.success("Message updated correctly!");
     } catch (error) {
-      stopErrorLoadingModal(`Something gone wrong: ${error}`);
-    } finally {
-      toast.dismiss();
+      toast.error(`Something gone wrong: ${error}`);
     }
   };
