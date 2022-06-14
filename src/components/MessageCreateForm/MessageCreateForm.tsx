@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { State } from "../../redux/features/messagesSlice";
 import { resetMessageActionCreator } from "../../redux/features/oneMessageSlice";
 import { useAppDispatch } from "../../redux/hooks";
+import Button from "@mui/material/Button";
 import {
   messageCreateThunk,
   messageUpdateThunk,
@@ -100,7 +101,9 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
           accept="image/png, image/jpeg, image/webp"
           onChange={changeData}
         />
-        <button
+        <Button
+          variant="contained"
+          className="button"
           type="submit"
           value="Send"
           disabled={
@@ -110,7 +113,7 @@ const MessageCreateForm = ({ message }: messageProp): JSX.Element => {
           }
         >
           Publish
-        </button>
+        </Button>
       </form>
     </MessageCreateFormStyled>
   );
