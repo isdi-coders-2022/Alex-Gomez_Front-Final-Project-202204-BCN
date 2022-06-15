@@ -6,7 +6,7 @@ import MessageList from "./MessageList";
 
 describe("Given a MessageList component", () => {
   describe("When it's instantiated", () => {
-    test("Then it should render a form with 1 inputs and a button", () => {
+    test("Then it should render at least a card", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>

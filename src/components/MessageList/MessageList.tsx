@@ -53,7 +53,7 @@ const MessageList = () => {
           </ul>
         </>
         <div className="page-buttons">
-          {messages.length > 6 && (
+          {index > 0 && (
             <Button
               variant="contained"
               type="submit"
