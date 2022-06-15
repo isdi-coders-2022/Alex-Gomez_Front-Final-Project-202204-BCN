@@ -43,7 +43,9 @@ const SubNavBar = (): JSX.Element => {
               onChange={changeData}
               autoComplete="off"
             >
-              <option value="Tradition">Tradition</option>
+              <option value="Tradition" selected>
+                Tradition
+              </option>
               <option value="Culture">Culture</option>
               <option value="Leisure">Leisure</option>
               <option value="Gastronomy">Gastronomy</option>
