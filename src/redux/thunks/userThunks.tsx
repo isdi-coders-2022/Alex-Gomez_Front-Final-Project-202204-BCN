@@ -12,7 +12,7 @@ export const userRegisterThunk =
   (formData: { name: string; username: string; password: string }) =>
   async (dispatch: AppDispatch) => {
     try {
-      startLoadingModal("Registiring user...");
+      startLoadingModal("Registering user...");
       const urlPath = `${process.env.REACT_APP_API_URL}user/register`;
       const {
         data: { username },
