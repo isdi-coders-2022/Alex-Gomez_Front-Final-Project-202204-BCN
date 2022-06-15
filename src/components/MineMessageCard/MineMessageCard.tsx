@@ -34,13 +34,20 @@ const MineMessageCard = ({
     navigate(`/message-detail/${id}`);
   };
 
+  const srcErrorHandler = (error: any) => {
+    let backupSrc = imageBackup;
+    (error.target as HTMLImageElement).onerror = null;
+    (error.target as HTMLImageElement).src = backupSrc;
+  };
+
   return (
     <MineMessageCardStyled>
       <div className="container">
         <img
           onClick={detailMessage}
           className="img"
-          src={imageBackup}
+          src={`${process.env.REACT_APP_API_URL}"uploads/images/"${image}`}
+          onError={srcErrorHandler}
           alt={`pic by ${author}`}
         />
         <p className="category">{category}</p>

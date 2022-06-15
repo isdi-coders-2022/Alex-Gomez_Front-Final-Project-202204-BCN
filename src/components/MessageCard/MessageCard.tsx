@@ -20,6 +20,12 @@ const MessageCard = ({
     navigate(`/message-detail/${id}`);
   };
 
+  const srcErrorHandler = (error: any) => {
+    let backupSrc = imageBackup;
+    (error.target as HTMLImageElement).onerror = null;
+    (error.target as HTMLImageElement).src = backupSrc;
+  };
+
   return (
     <MessageCardStyled>
       <div className="container">
@@ -27,7 +33,8 @@ const MessageCard = ({
           onClick={detailMessage}
           className="img"
           alt={`pic by ${author}`}
-          src={imageBackup}
+          src={`${process.env.REACT_APP_API_URL}"uploads/images/"${image}`}
+          onError={srcErrorHandler}
         />
         <p className="category">{category}</p>
         <p className="text">{`${
