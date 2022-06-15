@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { userRegisterThunk } from "../../redux/thunks/userThunks";
-import RegisteredFormStyled from "./RegisterFormStyled";
+import RegisterFormStyled from "./RegisterFormStyled";
 import Button from "@mui/material/Button";
 
 const RegisterForm = (): JSX.Element => {
@@ -30,7 +30,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   return (
-    <RegisteredFormStyled>
+    <RegisterFormStyled>
       <form onSubmit={submitRegister} noValidate autoComplete="off">
         <label htmlFor="name">Name</label>
         <input
@@ -73,7 +73,7 @@ const RegisterForm = (): JSX.Element => {
         <span>Already have account?</span>
         <Link to="/login">Login</Link>
       </form>
-    </RegisteredFormStyled>
+    </RegisterFormStyled>
   );
 };
 
