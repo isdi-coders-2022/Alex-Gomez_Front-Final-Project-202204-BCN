@@ -10,14 +10,14 @@ const MessageListStyled = styled.div`
     margin: 1rem;
   }
 
-  .page-buttons {
+  .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 3rem;
   }
 
-  .button {
+  .MuiButton {
     color: white;
     margin-left: 1rem;
     margin-right: 1rem;

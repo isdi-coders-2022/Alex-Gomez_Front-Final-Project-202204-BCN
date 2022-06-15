@@ -52,12 +52,12 @@ const MessageList = () => {
             })}
           </ul>
         </>
-        <div className="page-buttons">
+        <div className="pagination">
           {index > 0 && (
             <Button
               variant="contained"
               type="submit"
-              className="button"
+              className="MuiButton"
               onClick={() => {
                 if (index >= 6) {
                   setIndex(index - 6);
@@ -71,7 +71,7 @@ const MessageList = () => {
             <Button
               variant="contained"
               type="submit"
-              className="button"
+              className="MuiButton"
               onClick={() => {
                 if (index < messages.length - 6) {
                   setIndex(index + 6);
