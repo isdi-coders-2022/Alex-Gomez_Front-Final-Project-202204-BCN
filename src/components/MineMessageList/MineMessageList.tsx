@@ -47,36 +47,38 @@ const MineMessageList = () => {
             })}
           </ul>
         </>
-        <div className="page-buttons">
-          {messages.length > 6 && (
-            <Button
-              variant="contained"
-              type="submit"
-              className="button"
-              onClick={() => {
-                if (index >= 6) {
-                  setIndex(index - 6);
-                }
-              }}
-            >
-              Previous
-            </Button>
-          )}
-          {messages.length > index + 6 && (
-            <Button
-              variant="contained"
-              type="submit"
-              className="button"
-              onClick={() => {
-                if (index < messages.length - 6) {
-                  setIndex(index + 6);
-                }
-              }}
-            >
-              Next
-            </Button>
-          )}
-        </div>
+        {messages.length > 6 && (
+          <div className="page-buttons">
+            {index > 0 && (
+              <Button
+                variant="contained"
+                type="submit"
+                className="button"
+                onClick={() => {
+                  if (index >= 6) {
+                    setIndex(index - 6);
+                  }
+                }}
+              >
+                Previous
+              </Button>
+            )}
+            {messages.length > index + 6 && (
+              <Button
+                variant="contained"
+                type="submit"
+                className="button"
+                onClick={() => {
+                  if (index < messages.length - 6) {
+                    setIndex(index + 6);
+                  }
+                }}
+              >
+                Next
+              </Button>
+            )}
+          </div>
+        )}
       </MineMessageListStyled>
     </div>
   );

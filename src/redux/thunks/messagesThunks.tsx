@@ -6,7 +6,7 @@ import {
   stopOkLoadingModal,
 } from "../../components/LoadingModal/LoadingModal";
 import {
-  //createMessageActionCreator,
+  createMessageActionCreator,
   deleteMessageActionCreator,
   loadMessagesActionCreator,
   updateMessageActionCreator,
@@ -120,6 +120,7 @@ export const messageCreateThunk =
     try {
       const urlPath = `${process.env.REACT_APP_API_URL}messages/mine/create`;
       await axios.post(urlPath, formData, getAuthHeader());
+      dispatch(createMessageActionCreator);
       dispatch(messagesListThunk);
       toast.success("Message Published correctly!");
     } catch (error) {
