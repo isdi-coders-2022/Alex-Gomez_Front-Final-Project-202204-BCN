@@ -3,7 +3,10 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useAppDispatch } from "../../redux/hooks";
-import { messageDeleteThunk } from "../../redux/thunks/messagesThunks";
+import {
+  messageDeleteThunk,
+  messageGetThunk,
+} from "../../redux/thunks/messagesThunks";
 import { useNavigate } from "react-router-dom";
 
 interface IMessage {
@@ -26,7 +29,8 @@ const MineMessageCard = ({
     dispatch(messageDeleteThunk(id));
   };
 
-  const editMessage = () => {
+  const editMessage = async () => {
+    await dispatch(messageGetThunk(id as string));
     navigate(`/message-edit/${id}`);
   };
 
