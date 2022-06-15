@@ -33,7 +33,7 @@ const MessageCard = ({
           onClick={detailMessage}
           className="img"
           alt={`pic by ${author}`}
-          src={`${process.env.REACT_APP_API_URL}"uploads/images/"${image}`}
+          src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
           onError={srcErrorHandler}
         />
         <p className="category">{category}</p>
