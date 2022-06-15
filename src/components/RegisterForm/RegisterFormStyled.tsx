@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RegisteredFormStyled = styled.section`
+const RegisterFormStyled = styled.section`
   form {
     display: flex;
     flex-direction: column;
@@ -42,4 +42,4 @@ const RegisteredFormStyled = styled.section`
   }
 `;
 
-export default RegisteredFormStyled;
+export default RegisterFormStyled;
