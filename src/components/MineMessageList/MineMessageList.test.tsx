@@ -2,15 +2,15 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import MessageList from "./MessageList";
+import MineMessageList from "./MineMessageList";
 
-describe("Given a MessageList component", () => {
+describe("Given a MineMessageList component", () => {
   describe("When it's instantiated", () => {
-    test("Then it should render a form with 1 inputs and a button", () => {
+    test("Then it should render at least a card", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <MessageList />
+            <MineMessageList />
           </Provider>
         </BrowserRouter>
       );
