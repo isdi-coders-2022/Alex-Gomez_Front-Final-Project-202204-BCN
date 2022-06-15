@@ -46,7 +46,7 @@ const MineMessageCard = ({
         <img
           onClick={detailMessage}
           className="img"
-          src={`${process.env.REACT_APP_API_URL}"uploads/images/"${image}`}
+          src={`${process.env.REACT_APP_API_URL}uploads/images/${image}`}
           onError={srcErrorHandler}
           alt={`pic by ${author}`}
         />
