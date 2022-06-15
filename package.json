@@ -36,7 +36,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test-coverage": "react-scripts test --watchAll=true --coverage",
+    "test-coverage": "react-scripts test --watchAll=false --coverage",
     "test-full": "react-scripts test --watchAll=true --detectOpenHandles",
     "test-complete": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
